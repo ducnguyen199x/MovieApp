@@ -33,7 +33,7 @@ enum APIOption {
     case .scheduleByCinema:
       return "session/film"
     case .newsList:
-      return "news/lists"
+      return "news/list"
     case .newsDetail:
       return "news/detail"
     }

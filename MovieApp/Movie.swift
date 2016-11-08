@@ -17,7 +17,7 @@ class Movie: Decodable {
   let posterURL: String?
   let description: String?
   let status: ListType?
-//  let publishDate: Date?
+  let publishDate: Date?
   
   // MARK: - Deserialization
   required init?(json: JSON) {
@@ -27,7 +27,11 @@ class Movie: Decodable {
     self.posterURL = "poster_landscape" <~~ json
     self.description = "film_description_mobile" <~~ json
     self.status = "status_id" <~~ json
-    
+   
+    let dateString: String? = "publish_date" <~~ json
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    self.publishDate = dateFormatter.date(from: dateString!)
   }
   
 }

@@ -46,6 +46,7 @@ extension MoviesListViewController: UICollectionViewDataSource {
     cell.loadIMDBPoint(imdb: viewModel.getMovie(atIndex: indexPath.row).imdb)
     cell.loadImage(url: viewModel.getMovie(atIndex: indexPath.row).posterURL)
     cell.movieType = viewModel.getMovie(atIndex: indexPath.row).status
+    cell.loadCalendar(date: viewModel.getMovie(atIndex: indexPath.row).publishDate)
     
     return cell
   }

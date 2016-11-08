@@ -10,6 +10,10 @@
 		136A7B716BB4AEE7686714B2 /* Pods_MovieAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B409C6F1423FD2E31DAAE06C /* Pods_MovieAppUITests.framework */; };
 		D51DD5ED375CB2C9FD9C4C12 /* Pods_MovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E8BC0BEA67765ED293FE92 /* Pods_MovieAppTests.framework */; };
 		F83789AF1DD1B1A700A28C4D /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789AE1DD1B1A700A28C4D /* MoviesListViewModel.swift */; };
+		F83789B51DD1E28400A28C4D /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789B41DD1E28400A28C4D /* NewsCell.swift */; };
+		F83789B71DD1E2EA00A28C4D /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789B61DD1E2EA00A28C4D /* NewsListViewModel.swift */; };
+		F83789B91DD1E32100A28C4D /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789B81DD1E32100A28C4D /* NewsListViewController.swift */; };
+		F83789BB1DD1E3FA00A28C4D /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789BA1DD1E3FA00A28C4D /* News.swift */; };
 		F86987901DD022B3007C08F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F869878F1DD022B3007C08F5 /* AppDelegate.swift */; };
 		F86987951DD022B3007C08F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F86987931DD022B3007C08F5 /* Main.storyboard */; };
 		F86987971DD022B3007C08F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F86987961DD022B3007C08F5 /* Assets.xcassets */; };
@@ -54,6 +58,10 @@
 		E3ABD191E049EDFC7EDB3A24 /* Pods-MovieAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppUITests/Pods-MovieAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F83789AD1DD180D000A28C4D /* MovieApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		F83789AE1DD1B1A700A28C4D /* MoviesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
+		F83789B41DD1E28400A28C4D /* NewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		F83789B61DD1E2EA00A28C4D /* NewsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
+		F83789B81DD1E32100A28C4D /* NewsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
+		F83789BA1DD1E3FA00A28C4D /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		F869878C1DD022B3007C08F5 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F869878F1DD022B3007C08F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F86987941DD022B3007C08F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -134,7 +142,7 @@
 			name = API;
 			sourceTree = "<group>";
 		};
-		F83789B21DD1C28C00A28C4D /* ListModule */ = {
+		F83789B21DD1C28C00A28C4D /* MoviesListModule */ = {
 			isa = PBXGroup;
 			children = (
 				F892BA941DD035DA00A1E522 /* MovieCell.swift */,
@@ -143,7 +151,18 @@
 				F892BA9A1DD05D2200A1E522 /* SubViewModel.swift */,
 				F83789AE1DD1B1A700A28C4D /* MoviesListViewModel.swift */,
 			);
-			name = ListModule;
+			name = MoviesListModule;
+			sourceTree = "<group>";
+		};
+		F83789B31DD1E25200A28C4D /* NewsListModule */ = {
+			isa = PBXGroup;
+			children = (
+				F83789B41DD1E28400A28C4D /* NewsCell.swift */,
+				F83789B61DD1E2EA00A28C4D /* NewsListViewModel.swift */,
+				F83789B81DD1E32100A28C4D /* NewsListViewController.swift */,
+				F83789BA1DD1E3FA00A28C4D /* News.swift */,
+			);
+			name = NewsListModule;
 			sourceTree = "<group>";
 		};
 		F86987831DD022B3007C08F5 = {
@@ -204,7 +223,8 @@
 		F892BA991DD05CE200A1E522 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				F83789B21DD1C28C00A28C4D /* ListModule */,
+				F83789B31DD1E25200A28C4D /* NewsListModule */,
+				F83789B21DD1C28C00A28C4D /* MoviesListModule */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -491,11 +511,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F892BA9B1DD05D2200A1E522 /* SubViewModel.swift in Sources */,
+				F83789B51DD1E28400A28C4D /* NewsCell.swift in Sources */,
 				F892BA9D1DD068D300A1E522 /* APIData.swift in Sources */,
 				F892BA901DD02D0800A1E522 /* CustomTabBarController.swift in Sources */,
 				F892BA921DD033CC00A1E522 /* MoviesListViewController.swift in Sources */,
 				F86987901DD022B3007C08F5 /* AppDelegate.swift in Sources */,
+				F83789BB1DD1E3FA00A28C4D /* News.swift in Sources */,
+				F83789B91DD1E32100A28C4D /* NewsListViewController.swift in Sources */,
 				F892BA951DD035DA00A1E522 /* MovieCell.swift in Sources */,
+				F83789B71DD1E2EA00A28C4D /* NewsListViewModel.swift in Sources */,
 				F892BA981DD03FC100A1E522 /* Movie.swift in Sources */,
 				F83789AF1DD1B1A700A28C4D /* MoviesListViewModel.swift in Sources */,
 			);

@@ -42,4 +42,34 @@ class MovieCell: UICollectionViewCell {
     
     movieIMDBLabel.backgroundColor = UIColor(white: 0, alpha: 0.8)
   }
+  
+  // Load calendar
+  func loadCalendar(date: Date?) {
+    guard let date = date else { return }
+    
+    let calendar = Calendar.current
+    let day = calendar.component(.day, from: date)
+    let month = calendar.component(.month, from: date)
+    
+    // attach calendar image to label
+    let attachment = NSTextAttachment()
+    attachment.image = UIImage(named: "ic_calendar_white")
+    
+    let attachmentAttributedString = NSAttributedString(attachment: attachment)
+    let dateAttributedString = NSAttributedString(string: " \(day).\(month)")
+    let attributedText = NSMutableAttributedString()
+    attributedText.append(attachmentAttributedString)
+    attributedText.append(dateAttributedString)
+    
+    calendarLabel.attributedText = attributedText
+    
+  }
 }
+
+
+
+
+
+
+
+
