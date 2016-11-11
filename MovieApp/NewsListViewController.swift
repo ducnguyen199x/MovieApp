@@ -32,11 +32,17 @@ class NewsListViewController: UIViewController {
     .addDisposableTo(disposeBag)
     
   }
+  
+  // only load data when view is shown
+  override func viewDidAppear(_ animated: Bool) {
+    newsListViewModel.fetchNews()
+  }
 }
 
 // MARK: UICollectionViewDataSource
 extension NewsListViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    print("check-\(newsListViewModel.newsList.count)")
     return newsListViewModel.newsList.count
   }
   
@@ -44,6 +50,8 @@ extension NewsListViewController: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsCell", for: indexPath) as! NewsCell
       
     cell.loadImageView(withUrl: newsListViewModel.getNews(atIndex: indexPath.row).image_url)
+    cell.loadTitle(title: newsListViewModel.getNews(atIndex: indexPath.row).title)
+    cell.loadPublishTime(publishTime: newsListViewModel.getNews(atIndex: indexPath.row).dateUpdate)
     
     return cell
   }

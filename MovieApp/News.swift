@@ -26,7 +26,7 @@ class News: Decodable {
     
     
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     
     var dateString: String? = "date_add" <~~ json
     self.dateAdd = dateFormatter.date(from: dateString!)
@@ -35,5 +35,6 @@ class News: Decodable {
     self.dateUpdate = dateFormatter.date(from: dateString!)
 
     self.image_url = "image_full" <~~ json
+    
   }
 }

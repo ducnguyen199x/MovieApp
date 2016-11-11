@@ -31,6 +31,11 @@ class MoviesListViewController: UIViewController {
       }, onError: nil, onCompleted: nil, onDisposed: nil)
     .addDisposableTo(disposeBag)
   }
+  
+  // only load data when view is shown
+  override func viewDidAppear(_ animated: Bool) {
+    viewModel.fetchMovies()
+  }
 }
 
 // MARK: UICollectionViewDataSource

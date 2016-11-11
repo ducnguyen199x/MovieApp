@@ -31,6 +31,7 @@ class Movie: Decodable {
     let dateString: String? = "publish_date" <~~ json
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
+    
     self.publishDate = dateFormatter.date(from: dateString!)
   }
   

@@ -11,6 +11,7 @@ import RxSwift
 
 class NewsListViewModel {
   
+  // RxSwift
   var newsListObservable: Variable<[News]> = Variable([])
   var newsList: [News] {
     get{
@@ -24,15 +25,11 @@ class NewsListViewModel {
   
   let defaultSession = URLSession(configuration: .default)
   let api = APIData(version: "2.97", option: .newsList)
-  
-  init() {
-    fetchNews(withUrl: "\(api.getAPIPath())?type_id=1")
-    print("\(api.getAPIPath())?type_id=1")
-  }
-  
+
+
   // Fetch Data from API
-  func fetchNews(withUrl url: String) {
-    guard let url = URL(string: url) else { return }
+  func fetchNews() {
+    guard let url = URL(string: "\(api.getAPIPath())?type_id=1") else { return }
     
     // Create request
     var request = URLRequest(url: url)
@@ -63,7 +60,7 @@ class NewsListViewModel {
     // parse JSON
     do {
       guard let data = data, let response = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [String: AnyObject] else { return }
-      print(response)
+   
       guard let array = response["result"] as? [AnyObject] else { return }
       
       

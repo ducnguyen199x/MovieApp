@@ -15,13 +15,15 @@ class MovieCell: UICollectionViewCell {
   let imdbPointFont = UIFont.boldSystemFont(ofSize: 12)
   var movieType: ListType? {
     didSet{
-      calendarLabel.isHidden = movieType?.rawValue == 1 ? true : false
+      calendarView.isHidden = movieType?.rawValue == 1 ? true : false
     }
   }
   
   @IBOutlet var movieImage: UIImageView!
   @IBOutlet var movieIMDBLabel: UILabel!
   @IBOutlet var calendarLabel: UILabel!
+  @IBOutlet var calendarView: UIView!
+  
   
   // Load Image from URL
   func loadImage(url: String?) {
@@ -51,18 +53,8 @@ class MovieCell: UICollectionViewCell {
     let day = calendar.component(.day, from: date)
     let month = calendar.component(.month, from: date)
     
-    // attach calendar image to label
-    let attachment = NSTextAttachment()
-    attachment.image = UIImage(named: "ic_calendar_white")
-    
-    let attachmentAttributedString = NSAttributedString(attachment: attachment)
-    let dateAttributedString = NSAttributedString(string: " \(day).\(month)")
-    let attributedText = NSMutableAttributedString()
-    attributedText.append(attachmentAttributedString)
-    attributedText.append(dateAttributedString)
-    
-    calendarLabel.attributedText = attributedText
-    
+    calendarLabel.text = "\(day).\(month)"
+
   }
 }
 

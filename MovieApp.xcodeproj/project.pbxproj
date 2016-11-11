@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		136A7B716BB4AEE7686714B2 /* Pods_MovieAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B409C6F1423FD2E31DAAE06C /* Pods_MovieAppUITests.framework */; };
 		D51DD5ED375CB2C9FD9C4C12 /* Pods_MovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E8BC0BEA67765ED293FE92 /* Pods_MovieAppTests.framework */; };
+		F83329E41DD315F10068EF73 /* CinemaAroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83329E31DD315F10068EF73 /* CinemaAroundViewController.swift */; };
+		F83329E61DD315FE0068EF73 /* CinemaAroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83329E51DD315FE0068EF73 /* CinemaAroundViewModel.swift */; };
+		F83329E81DD31ABA0068EF73 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83329E71DD31ABA0068EF73 /* Cinema.swift */; };
+		F83329EA1DD31FEC0068EF73 /* CinemaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83329E91DD31FEC0068EF73 /* CinemaCell.swift */; };
 		F83789AF1DD1B1A700A28C4D /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789AE1DD1B1A700A28C4D /* MoviesListViewModel.swift */; };
 		F83789B51DD1E28400A28C4D /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789B41DD1E28400A28C4D /* NewsCell.swift */; };
 		F83789B71DD1E2EA00A28C4D /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789B61DD1E2EA00A28C4D /* NewsListViewModel.swift */; };
@@ -26,6 +30,9 @@
 		F892BA981DD03FC100A1E522 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F892BA971DD03FC100A1E522 /* Movie.swift */; };
 		F892BA9B1DD05D2200A1E522 /* SubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F892BA9A1DD05D2200A1E522 /* SubViewModel.swift */; };
 		F892BA9D1DD068D300A1E522 /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F892BA9C1DD068D300A1E522 /* APIData.swift */; };
+		F8EF59CC1DD42497007B8C3D /* CinemaMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EF59CB1DD42497007B8C3D /* CinemaMarker.swift */; };
+		F8EF59CE1DD429A6007B8C3D /* CinemaMarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8EF59CD1DD429A6007B8C3D /* CinemaMarkerInfoView.xib */; };
+		F8EF59D01DD42CFD007B8C3D /* CinemaMarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EF59CF1DD42CFD007B8C3D /* CinemaMarkerInfoView.swift */; };
 		FBDC73566DD9F7BF576AC9D3 /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CCCA7BAED63B6ABB610BC6 /* Pods_MovieApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +63,10 @@
 		B409C6F1423FD2E31DAAE06C /* Pods_MovieAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9432C7A96DD955720B637BB /* Pods-MovieAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppTests/Pods-MovieAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3ABD191E049EDFC7EDB3A24 /* Pods-MovieAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppUITests/Pods-MovieAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F83329E31DD315F10068EF73 /* CinemaAroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaAroundViewController.swift; sourceTree = "<group>"; };
+		F83329E51DD315FE0068EF73 /* CinemaAroundViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaAroundViewModel.swift; sourceTree = "<group>"; };
+		F83329E71DD31ABA0068EF73 /* Cinema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
+		F83329E91DD31FEC0068EF73 /* CinemaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaCell.swift; sourceTree = "<group>"; };
 		F83789AD1DD180D000A28C4D /* MovieApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		F83789AE1DD1B1A700A28C4D /* MoviesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 		F83789B41DD1E28400A28C4D /* NewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
@@ -80,6 +91,9 @@
 		F892BA971DD03FC100A1E522 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F892BA9A1DD05D2200A1E522 /* SubViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewModel.swift; sourceTree = "<group>"; };
 		F892BA9C1DD068D300A1E522 /* APIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
+		F8EF59CB1DD42497007B8C3D /* CinemaMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaMarker.swift; sourceTree = "<group>"; };
+		F8EF59CD1DD429A6007B8C3D /* CinemaMarkerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CinemaMarkerInfoView.xib; sourceTree = "<group>"; };
+		F8EF59CF1DD42CFD007B8C3D /* CinemaMarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaMarkerInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +145,19 @@
 				E3ABD191E049EDFC7EDB3A24 /* Pods-MovieAppUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F83329E21DD311460068EF73 /* CinemaAroundModule */ = {
+			isa = PBXGroup;
+			children = (
+				F83329E31DD315F10068EF73 /* CinemaAroundViewController.swift */,
+				F83329E51DD315FE0068EF73 /* CinemaAroundViewModel.swift */,
+				F83329E71DD31ABA0068EF73 /* Cinema.swift */,
+				F83329E91DD31FEC0068EF73 /* CinemaCell.swift */,
+				F8EF59CB1DD42497007B8C3D /* CinemaMarker.swift */,
+				F8EF59D11DD43301007B8C3D /* View */,
+			);
+			name = CinemaAroundModule;
 			sourceTree = "<group>";
 		};
 		F83789AC1DD1809800A28C4D /* API */ = {
@@ -223,10 +250,20 @@
 		F892BA991DD05CE200A1E522 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F83329E21DD311460068EF73 /* CinemaAroundModule */,
 				F83789B31DD1E25200A28C4D /* NewsListModule */,
 				F83789B21DD1C28C00A28C4D /* MoviesListModule */,
 			);
 			name = Modules;
+			sourceTree = "<group>";
+		};
+		F8EF59D11DD43301007B8C3D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8EF59CD1DD429A6007B8C3D /* CinemaMarkerInfoView.xib */,
+				F8EF59CF1DD42CFD007B8C3D /* CinemaMarkerInfoView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +385,7 @@
 				F869879A1DD022B3007C08F5 /* LaunchScreen.storyboard in Resources */,
 				F86987971DD022B3007C08F5 /* Assets.xcassets in Resources */,
 				F86987951DD022B3007C08F5 /* Main.storyboard in Resources */,
+				F8EF59CE1DD429A6007B8C3D /* CinemaMarkerInfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,13 +551,19 @@
 				F892BA9B1DD05D2200A1E522 /* SubViewModel.swift in Sources */,
 				F83789B51DD1E28400A28C4D /* NewsCell.swift in Sources */,
 				F892BA9D1DD068D300A1E522 /* APIData.swift in Sources */,
+				F8EF59CC1DD42497007B8C3D /* CinemaMarker.swift in Sources */,
 				F892BA901DD02D0800A1E522 /* CustomTabBarController.swift in Sources */,
+				F8EF59D01DD42CFD007B8C3D /* CinemaMarkerInfoView.swift in Sources */,
 				F892BA921DD033CC00A1E522 /* MoviesListViewController.swift in Sources */,
 				F86987901DD022B3007C08F5 /* AppDelegate.swift in Sources */,
 				F83789BB1DD1E3FA00A28C4D /* News.swift in Sources */,
 				F83789B91DD1E32100A28C4D /* NewsListViewController.swift in Sources */,
+				F83329EA1DD31FEC0068EF73 /* CinemaCell.swift in Sources */,
+				F83329E61DD315FE0068EF73 /* CinemaAroundViewModel.swift in Sources */,
+				F83329E81DD31ABA0068EF73 /* Cinema.swift in Sources */,
 				F892BA951DD035DA00A1E522 /* MovieCell.swift in Sources */,
 				F83789B71DD1E2EA00A28C4D /* NewsListViewModel.swift in Sources */,
+				F83329E41DD315F10068EF73 /* CinemaAroundViewController.swift in Sources */,
 				F892BA981DD03FC100A1E522 /* Movie.swift in Sources */,
 				F83789AF1DD1B1A700A28C4D /* MoviesListViewModel.swift in Sources */,
 			);

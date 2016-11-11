@@ -8,6 +8,8 @@ target 'MovieApp' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Kingfisher'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
   
   # Pods for MovieApp
 

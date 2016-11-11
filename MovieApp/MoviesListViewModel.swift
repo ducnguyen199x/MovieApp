@@ -22,6 +22,7 @@ class MoviesListViewModel : NSObject {
   let defaultSession = URLSession(configuration: .default)
   let api = APIData(version: "2.97", option: .moviesList)
   
+  // Rxswift here
   var moviesListObservable: Variable<[Movie]> = Variable([])
   var moviesList: [Movie] {
     get {
@@ -35,12 +36,10 @@ class MoviesListViewModel : NSObject {
   
   init(type: ListType) {
     self.type = type
-    super.init()
-    fetchMovies(withUrl: "\(api.getAPIPath())?status=\(self.type.rawValue)")
   }
   
-  func fetchMovies(withUrl url: String) {
-    guard let url = URL(string: url) else { return }
+  func fetchMovies() {
+    guard let url = URL(string: "\(api.getAPIPath())?status=\(self.type.rawValue)") else { return }
     
     
     // Create request
@@ -90,5 +89,4 @@ class MoviesListViewModel : NSObject {
   func getMovie(atIndex index: Int) -> Movie {
     return moviesList[index]
   }
-  
 }

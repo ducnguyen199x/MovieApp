@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="g6N-hu-Ujm" customClass="CinemaMarkerInfoView" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="276" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZUj-NY-ODS">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="ODf-jw-W3E"/>
+                        <constraint firstAttribute="width" constant="31" id="XjI-Po-Eye"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-83-rwZ">
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fp5-vR-l7b">
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="xeK-83-rwZ" firstAttribute="leading" secondItem="ZUj-NY-ODS" secondAttribute="trailing" constant="8" id="A7g-eb-vhM"/>
+                <constraint firstItem="Fp5-vR-l7b" firstAttribute="bottom" secondItem="ZUj-NY-ODS" secondAttribute="bottom" constant="2" id="DBT-eS-3b2"/>
+                <constraint firstItem="ZUj-NY-ODS" firstAttribute="leading" secondItem="g6N-hu-Ujm" secondAttribute="leading" constant="10" id="MXZ-Sn-Njg"/>
+                <constraint firstItem="Fp5-vR-l7b" firstAttribute="leading" secondItem="ZUj-NY-ODS" secondAttribute="trailing" constant="8" id="RQA-5x-4BC"/>
+                <constraint firstItem="ZUj-NY-ODS" firstAttribute="centerY" secondItem="g6N-hu-Ujm" secondAttribute="centerY" id="gL0-of-XrI"/>
+                <constraint firstAttribute="trailing" secondItem="Fp5-vR-l7b" secondAttribute="trailing" constant="10" id="gVB-Ug-QIU"/>
+                <constraint firstItem="xeK-83-rwZ" firstAttribute="top" secondItem="ZUj-NY-ODS" secondAttribute="top" constant="-2" id="gjJ-8f-doe"/>
+                <constraint firstAttribute="trailing" secondItem="xeK-83-rwZ" secondAttribute="trailing" constant="10" id="z7T-uQ-Uci"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cinemaAddress" destination="Fp5-vR-l7b" id="CHW-SH-aui"/>
+                <outlet property="cinemaName" destination="xeK-83-rwZ" id="SEN-Bo-MNk"/>
+                <outlet property="icon" destination="ZUj-NY-ODS" id="8Sb-HQ-vMc"/>
+            </connections>
+            <point key="canvasLocation" x="-352" y="10"/>
+        </view>
+    </objects>
+</document>
