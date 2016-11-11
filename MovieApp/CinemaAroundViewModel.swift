@@ -12,10 +12,17 @@ import GoogleMaps
 
 class CinemaAroundViewModel {
   
+  // declare constant
+  let directionURL = "https://maps.googleapis.com/maps/api/directions/json"
+  let googleMapsApiKey = "AIzaSyCuImoIQbsgLBEWiGogKx63siPvzq77GqA"
+  let polylineColor = UIColor.red
+  let polylineWidth: CGFloat = 4.0
+  
   let defaultSession = URLSession(configuration: .default)
   let api =  APIData(version: "2.97", option: .cinemas)
   
   var cinemasList: [Cinema] = []
+  var polylinesList: [GMSPolyline] = []
   
   // RxSwift
   var nearbyCinemasListObservable: Variable<[Cinema]> = Variable([])
@@ -87,13 +94,89 @@ class CinemaAroundViewModel {
     }
     
     // Only get cinemas with distance < 10km
-    nearbyCinemasList = nearbyCinemasList.filter { $0.distance < 10 }
+    nearbyCinemasList = nearbyCinemasList.filter { $0.distance < 20 }
+  }
+  
+  // Get Map Direction
+  func fetchDirection(from origin: (Double, Double), to destination: (Double, Double), completionHandler: @escaping (GMSPolyline) -> ()) {
+    guard let url = URL(string: "\(directionURL)?origin=\(origin.0),\(origin.1)&destination=\(destination.0),\(destination.1)")
+      else {
+        return
+    }
+    
+    print(url.absoluteString)
+    let task = defaultSession.dataTask(with: url) {
+      (data, response, error) in
+      
+      if let error = error {
+        print(error)
+      } else if let httpResponse = response as? HTTPURLResponse {
+        if httpResponse.statusCode == 200 {
+          
+          DispatchQueue.main.async {
+             completionHandler(self.getDirection(data: data))
+          }
+        }
+      }
+    }
+    
+    task.resume()
+  }
+  
+  // update Direction list
+  func getDirection(data: Data?) -> GMSPolyline {
+    
+    // Clear all directions on the map
+    clearAllPolylines()
+    
+    polylinesList.removeAll()
+    
+    let polyline = GMSPolyline()
+    
+    guard let data = data else { return polyline }
+    
+    do{
+      guard let response = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as AnyObject? else { return polyline }
+      
+      guard let routes = response["routes"] as? [AnyObject] else { return polyline }
+      guard let legs = routes[0]["legs"] as? [AnyObject] else { return polyline }
+      guard let steps = legs[0]["steps"] as? [AnyObject] else { return polyline }
+      
+      let path = GMSMutablePath()
+      
+      for i in 0..<steps.count {
+        guard let step = steps[i]["start_location"] as? [String: Double] else { return polyline }
+        path.addLatitude(step["lat"]!, longitude: step["lng"]!)
+        
+        if i == steps.count - 1 {
+          guard let step = steps[i]["end_location"] as? [String: Double] else { return polyline }
+          path.addLatitude(step["lat"]!, longitude: step["lng"]!)
+        }
+      }
+      
+      polyline.path = path
+      polyline.strokeColor = polylineColor
+      polyline.strokeWidth = polylineWidth
+      polylinesList.append(polyline)
+      
+    } catch {
+      print(error)
+    }
+    
+    return polyline
   }
   
   // load View from nib
   func viewFromNibName(_ name: String) -> UIView? {
     let views = Bundle.main.loadNibNamed(name, owner: nil, options: nil)
     return views?.first as? UIView
+  }
+  
+  // clear all polylines
+  func clearAllPolylines(){
+    for polyline in polylinesList {
+      polyline.map = nil
+    }
   }
 }
 

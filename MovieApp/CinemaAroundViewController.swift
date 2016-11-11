@@ -19,6 +19,7 @@ class CinemaAroundViewController: UIViewController {
   
   let cinemaAroundViewModel = CinemaAroundViewModel()
   let locationManager = CLLocationManager()
+  var currentLocation = CLLocation()
   let disposeBag = DisposeBag()
   
   override func viewDidLoad() {
@@ -64,7 +65,7 @@ extension CinemaAroundViewController: UITableViewDataSource {
     let distance = cinemaAroundViewModel.nearbyCinemasList[indexPath.row].distance
     cell.distanceLabel.text = String(format: "%.1f", distance)
     
-    let marker = CinemaMarker(cinema: cinemaAroundViewModel.cinemasList[indexPath.row])
+    let marker = CinemaMarker(cinema: cinemaAroundViewModel.nearbyCinemasList[indexPath.row])
     marker.map = self.mapView
     
     return cell
@@ -74,8 +75,19 @@ extension CinemaAroundViewController: UITableViewDataSource {
 // MARK: UITableViewDelegate
 extension CinemaAroundViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
     
+    let cinema = cinemaAroundViewModel.nearbyCinemasList[indexPath.row]
+    
+    // Get direction from Google Map api
+    cinemaAroundViewModel.fetchDirection(from: (currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), to: (cinema.latitude!, cinema.longtitude!), completionHandler: {
+      (polyline) in
+      
+      // draw direction
+      polyline.map = self.mapView
+      
+    })
+    
+    tableView.deselectRow(at: indexPath, animated: true)
   }
   
 }
@@ -102,6 +114,8 @@ extension CinemaAroundViewController: CLLocationManagerDelegate {
     
     // Detect user location and find nearby cinemas
     if let userLocation = locations.last {
+      currentLocation = userLocation
+      
       let latitude = userLocation.coordinate.latitude
       let longitude = userLocation.coordinate.longitude
       
@@ -119,23 +133,31 @@ extension CinemaAroundViewController: CLLocationManagerDelegate {
 // MARK: GMSMapViewDelegate
 extension CinemaAroundViewController: GMSMapViewDelegate {
   func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+        
     if let marker = marker as? CinemaMarker {
     
-      if let infoView = cinemaAroundViewModel.viewFromNibName("CinemaMarkerInfoView") as? CinemaMarkerInfoView {
-        infoView.cinemaName.text = marker.cinema.name
-        infoView.cinemaAddress.text = marker.cinema.address
-        infoView.icon.image = UIImage(named: "cinema_holder")
+      guard let infoView = cinemaAroundViewModel.viewFromNibName("CinemaMarkerInfoView") as? CinemaMarkerInfoView else { return nil }
       
-        return infoView
-      } else {
-        return nil
-      }
+      infoView.cinemaName.text = marker.cinema.name
+      infoView.cinemaAddress.text = marker.cinema.address
+      infoView.icon.image = UIImage(named: "cinema_holder")
+      
+      // Get direction from Google Map api
+      cinemaAroundViewModel.fetchDirection(from: (currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), to: (marker.cinema.latitude!, marker.cinema.longtitude!), completionHandler: {
+          (polyline) in
+          
+        // draw direction
+        polyline.map = self.mapView
+        
+      })
+        
+      return infoView
     }
     
     return nil
   }
-  
-  
+
+
   func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
     return false
   }

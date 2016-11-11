@@ -8,7 +8,6 @@
 
 import UIKit
 import GoogleMaps
-import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Add Google Maps API Key
     GMSServices.provideAPIKey(googleMapsApiKey)
-    GMSPlacesClient.provideAPIKey(googleMapsApiKey)
     
     return true
   }

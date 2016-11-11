@@ -41,6 +41,10 @@ class NewsListViewController: UIViewController {
 
 // MARK: UICollectionViewDataSource
 extension NewsListViewController: UICollectionViewDataSource {
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 1
+  }
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     print("check-\(newsListViewModel.newsList.count)")
     return newsListViewModel.newsList.count
