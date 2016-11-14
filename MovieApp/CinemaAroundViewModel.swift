@@ -36,13 +36,9 @@ class CinemaAroundViewModel {
     }
   }
   
-  init() {
-    fetchCinemas(withURL: api.getAPIPath())
-  }
-  
   // Fetch all cinemas
-  func fetchCinemas(withURL url: String) {
-    guard let url = URL(string: url) else { return }
+  func fetchCinemas(completionHandler: @escaping ([Cinema]) -> ()) {
+    guard let url = URL(string: api.getAPIPath()) else { return }
     
     // Create request
     var request = URLRequest(url: url)
@@ -58,7 +54,9 @@ class CinemaAroundViewModel {
         print(error)
       } else if let httpResponse = response as? HTTPURLResponse {
         if httpResponse.statusCode == 200 {
-          self.updateCinemasList(data: data)
+          DispatchQueue.main.async {
+            completionHandler(self.updateCinemasList(data: data))
+          }
         }
       }
     }
@@ -67,13 +65,13 @@ class CinemaAroundViewModel {
   }
   
   // Parse json into Object
-  func updateCinemasList(data: Data?) {
+  func updateCinemasList(data: Data?) -> [Cinema] {
     cinemasList.removeAll()
     
     do {
       if let data = data, let response = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as? [String: AnyObject] {
         
-        guard let array = response["result"] as? [AnyObject] else { return }
+        guard let array = response["result"] as? [AnyObject] else { return cinemasList }
       
         for i in 0..<array.count {
           if let item = array[i] as? [String: AnyObject], let cinema = Cinema(json: item) {
@@ -85,6 +83,8 @@ class CinemaAroundViewModel {
     } catch {
       print(error)
     }
+    
+    return cinemasList
   }
   
   // find nearby cinemas
@@ -92,9 +92,6 @@ class CinemaAroundViewModel {
     nearbyCinemasList = cinemasList.sorted { (cinema1, cinema2) -> Bool in
       cinema1.getDistance(fromLocation: location) < cinema2.getDistance(fromLocation: location)
     }
-    
-    // Only get cinemas with distance < 10km
-    nearbyCinemasList = nearbyCinemasList.filter { $0.distance < 20 }
   }
   
   // Get Map Direction

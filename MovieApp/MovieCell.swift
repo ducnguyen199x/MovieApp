@@ -54,7 +54,7 @@ class MovieCell: UICollectionViewCell {
     let month = calendar.component(.month, from: date)
     
     calendarLabel.text = "\(day).\(month)"
-
+    calendarLabel.textColor = UIColor(white: 1, alpha: 1)
   }
 }
 

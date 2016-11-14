@@ -49,7 +49,7 @@ class Cinema: Decodable {
     
     let cinemaLocation = CLLocation(latitude: latitude, longitude: longitude)
     
-    let distance = targetLocation.distance(from: cinemaLocation) / 100
+    let distance = targetLocation.distance(from: cinemaLocation) / 1000
     
     self.distance = distance
     

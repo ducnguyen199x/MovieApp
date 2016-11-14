@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Add Google Maps API Key
     GMSServices.provideAPIKey(googleMapsApiKey)
     
+    // Status bar
+    UIApplication.shared.statusBarStyle = .lightContent
+    
+    
     return true
   }
 

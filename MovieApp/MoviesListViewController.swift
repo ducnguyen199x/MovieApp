@@ -16,7 +16,7 @@ class MoviesListViewController: UIViewController {
   
   let disposeBag = DisposeBag()
   @IBOutlet var viewModel: MoviesListViewModel!
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -28,13 +28,28 @@ class MoviesListViewController: UIViewController {
         self.collectionView.reloadData()
       }
       
-      }, onError: nil, onCompleted: nil, onDisposed: nil)
-    .addDisposableTo(disposeBag)
+    }, onError: nil, onCompleted: nil, onDisposed: nil)
+      .addDisposableTo(disposeBag)
   }
   
   // only load data when view is shown
   override func viewDidAppear(_ animated: Bool) {
+    
     viewModel.fetchMovies()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    navigationController?.navigationBar.isHidden = true
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showDetailsView" {
+      
+      guard let destinationViewController: MovieDetailsViewController = segue.destination as? MovieDetailsViewController, let selectedIndex = collectionView.indexPathsForSelectedItems?.first?.row else { return }
+      
+      destinationViewController.movieID = viewModel.getMovie(atIndex: selectedIndex).id
+      
+    }
   }
 }
 
