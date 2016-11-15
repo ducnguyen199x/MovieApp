@@ -21,6 +21,7 @@ class CinemaAroundViewController: UIViewController {
   let locationManager = CLLocationManager()
   var currentLocation = CLLocation()
   let disposeBag = DisposeBag()
+  let currentLocationMarker = GMSMarker()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -51,6 +52,12 @@ class CinemaAroundViewController: UIViewController {
       
       self.locationManager.startUpdatingLocation()
     }
+    
+    // current location marker
+    
+    currentLocationMarker.icon = UIImage(named: "current_location")
+    
+    currentLocationMarker.map = self.mapView
   }
   
   // update location and nearby cinemas when view is shown
@@ -100,7 +107,6 @@ extension CinemaAroundViewController: UITableViewDelegate {
     
     tableView.deselectRow(at: indexPath, animated: true)
   }
-  
 }
 
 // MARK: CLLocationManagerDelegate
@@ -116,6 +122,7 @@ extension CinemaAroundViewController: CLLocationManagerDelegate {
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+ 
     if let location = locations.first {
       
       mapView.animate(toLocation: location.coordinate)
@@ -125,16 +132,13 @@ extension CinemaAroundViewController: CLLocationManagerDelegate {
     
     // Detect user location and find nearby cinemas
     if let userLocation = locations.last {
+      
       currentLocation = userLocation
       
       let latitude = userLocation.coordinate.latitude
       let longitude = userLocation.coordinate.longitude
       
-      let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
-      
-      marker.icon = UIImage(named: "current_location")
-      
-      marker.map = self.mapView
+      currentLocationMarker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
       
       cinemaAroundViewModel.findNearbyCinemas(atLocation: userLocation)
     }

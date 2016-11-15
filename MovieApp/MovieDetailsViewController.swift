@@ -8,10 +8,22 @@
 
 import UIKit
 import Kingfisher
+import FLEX
 
 class MovieDetailsViewController: UIViewController {
   
   @IBOutlet var thumbnail: UIImageView!
+  @IBOutlet var movieNameLabel: UILabel!
+  @IBOutlet var imdbStarImage: UIImageView!
+  @IBOutlet var imdbPointLabel: UILabel!
+  @IBOutlet var durationLabel: UILabel!
+  @IBOutlet var publishDateLabel: UILabel!
+  @IBOutlet var movieTypeLabel: UILabel!
+  @IBOutlet var descriptionLabel: UILabel!
+  @IBOutlet var directorLabel: UILabel!
+  @IBOutlet var writerLabel: UILabel!
+  @IBOutlet var starLabel: UILabel!
+  @IBOutlet var pgRatingLabel: UILabel!
   
   let movieDetailsViewModel = MovieDetailsViewModel()
   var movieID: String?
@@ -30,6 +42,10 @@ class MovieDetailsViewController: UIViewController {
     navigationItem.leftBarButtonItem = backButton
     
     loadData()
+    
+//    #if DEBUG
+//      FLEXManager.shared().showExplorer()
+//    #endif
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -46,12 +62,40 @@ class MovieDetailsViewController: UIViewController {
     movieDetailsViewModel.fetchMovieDetails(id: movieID) {
       (movieDetails) in
       
+      print(movieDetails?.id)
+      
       guard let movieDetails = movieDetails else { return }
       
       self.thumbnail.kf.setImage(with: URL(string: movieDetails.posterLandscapeURL!))
+      self.pgRatingLabel.text = movieDetails.pgRating
+      self.movieNameLabel.text = movieDetails.name!
+      self.imdbPointLabel.text = "\(movieDetails.imdb!) IMDB"
+      self.durationLabel.text = movieDetails.duration?.minutesToHours()
+      self.publishDateLabel.text = movieDetails.getPublishDateString()
+      self.descriptionLabel.text = movieDetails.description!
+      self.directorLabel.text = movieDetails.getDirector()
+      self.starLabel.text = movieDetails.getStars()
       
     }
   }
+  
+  @IBAction func moreButtonClicked(_ sender: UIButton) {
+    sender.isSelected = !sender.isSelected
+    
+    UILabel.animate(withDuration: 0.2) {
+      if sender.isSelected {
+        self.descriptionLabel.numberOfLines = 0
+      } else {
+        self.descriptionLabel.numberOfLines = 3
+      }
+      self.descriptionLabel.sizeToFit()
+    }
+    
+  }
+
+  @IBAction func playButtonClicked(_ sender: Any) {
+  }
+  
 }
 
 

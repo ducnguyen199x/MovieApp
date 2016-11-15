@@ -9,6 +9,7 @@ target 'MovieApp' do
   pod 'RxCocoa'
   pod 'Kingfisher'
   pod 'GoogleMaps'
+  pod 'FLEX', '~> 2.0', :configurations => ['Debug']
   
   # Pods for MovieApp
 

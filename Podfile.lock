@@ -1,4 +1,5 @@
 PODS:
+  - FLEX (2.4.0)
   - Gloss (1.0.0)
   - GoogleMaps (2.1.0):
     - GoogleMaps/Maps (= 2.1.0)
@@ -11,6 +12,7 @@ PODS:
   - RxSwift (3.0.0)
 
 DEPENDENCIES:
+  - FLEX (~> 2.0)
   - Gloss
   - GoogleMaps
   - Kingfisher
@@ -18,12 +20,13 @@ DEPENDENCIES:
   - RxSwift
 
 SPEC CHECKSUMS:
+  FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
   Gloss: 014789e9e69ca18f127eacca999f4c9b0bff6d58
   GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
   Kingfisher: 6c67e3e57f2d81a9cfdfa25052cd86f33ceac9bb
   RxCocoa: 0a2f3ae381cf16f4021a4cee7a4420f83058a965
   RxSwift: a930cd662f5b4a7ca9dc3518585dba91dadf497c
 
-PODFILE CHECKSUM: c3392bc813925ca2c9ba1d3477ee364ece0455ca
+PODFILE CHECKSUM: 786ae25d136f30cb921e356c52e4c58ca9c43ad4
 
 COCOAPODS: 1.1.1

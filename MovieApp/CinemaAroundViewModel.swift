@@ -136,20 +136,9 @@ class CinemaAroundViewModel {
       guard let response = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0)) as AnyObject? else { return polyline }
       
       guard let routes = response["routes"] as? [AnyObject] else { return polyline }
-      guard let legs = routes[0]["legs"] as? [AnyObject] else { return polyline }
-      guard let steps = legs[0]["steps"] as? [AnyObject] else { return polyline }
+      guard let overview_polyline = routes[0]["overview_polyline"] as? [String: String] else { return polyline }
       
-      let path = GMSMutablePath()
-      
-      for i in 0..<steps.count {
-        guard let step = steps[i]["start_location"] as? [String: Double] else { return polyline }
-        path.addLatitude(step["lat"]!, longitude: step["lng"]!)
-        
-        if i == steps.count - 1 {
-          guard let step = steps[i]["end_location"] as? [String: Double] else { return polyline }
-          path.addLatitude(step["lat"]!, longitude: step["lng"]!)
-        }
-      }
+      let path = GMSPath(fromEncodedPath: overview_polyline["points"]!)
       
       polyline.path = path
       polyline.strokeColor = polylineColor

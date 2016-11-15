@@ -32,6 +32,7 @@
 		F892BA981DD03FC100A1E522 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F892BA971DD03FC100A1E522 /* Movie.swift */; };
 		F892BA9B1DD05D2200A1E522 /* SubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F892BA9A1DD05D2200A1E522 /* SubViewModel.swift */; };
 		F892BA9D1DD068D300A1E522 /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F892BA9C1DD068D300A1E522 /* APIData.swift */; };
+		F893F5E41DDB172000144721 /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F893F5E31DDB172000144721 /* MoreButton.swift */; };
 		F89CBD831DD9C73C00413DEC /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89CBD821DD9C73C00413DEC /* MovieDetails.swift */; };
 		F8EF59CC1DD42497007B8C3D /* CinemaMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EF59CB1DD42497007B8C3D /* CinemaMarker.swift */; };
 		F8EF59CE1DD429A6007B8C3D /* CinemaMarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8EF59CD1DD429A6007B8C3D /* CinemaMarkerInfoView.xib */; };
@@ -96,6 +97,7 @@
 		F892BA971DD03FC100A1E522 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F892BA9A1DD05D2200A1E522 /* SubViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewModel.swift; sourceTree = "<group>"; };
 		F892BA9C1DD068D300A1E522 /* APIData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
+		F893F5E31DDB172000144721 /* MoreButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
 		F89CBD821DD9C73C00413DEC /* MovieDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		F8EF59CB1DD42497007B8C3D /* CinemaMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaMarker.swift; sourceTree = "<group>"; };
 		F8EF59CD1DD429A6007B8C3D /* CinemaMarkerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CinemaMarkerInfoView.xib; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				F80BD1341DD97538007D0C5F /* MovieDetailsViewController.swift */,
 				F80BD1361DD97548007D0C5F /* MovieDetailsViewModel.swift */,
 				F89CBD821DD9C73C00413DEC /* MovieDetails.swift */,
+				F893F5E31DDB172000144721 /* MoreButton.swift */,
 			);
 			name = MovieDetailsModule;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				F83329EA1DD31FEC0068EF73 /* CinemaCell.swift in Sources */,
 				F83329E61DD315FE0068EF73 /* CinemaAroundViewModel.swift in Sources */,
 				F83329E81DD31ABA0068EF73 /* Cinema.swift in Sources */,
+				F893F5E41DDB172000144721 /* MoreButton.swift in Sources */,
 				F892BA951DD035DA00A1E522 /* MovieCell.swift in Sources */,
 				F83789B71DD1E2EA00A28C4D /* NewsListViewModel.swift in Sources */,
 				F83329E41DD315F10068EF73 /* CinemaAroundViewController.swift in Sources */,
@@ -682,7 +686,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -727,7 +731,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -744,7 +748,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ER36CQZ4KE;
 				INFOPLIST_FILE = MovieApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NguyenThanhDuc.MovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -762,7 +766,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ER36CQZ4KE;
 				INFOPLIST_FILE = MovieApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.NguyenThanhDuc.MovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

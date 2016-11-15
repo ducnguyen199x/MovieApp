@@ -36,7 +36,9 @@ class MovieDetailsViewModel {
         print(error)
       } else if let httpResponse = response as? HTTPURLResponse {
         if httpResponse.statusCode == 200 {
-          completionHandler(self.getMovieDetailsFromData(data: data))
+          DispatchQueue.main.async {
+            completionHandler(self.getMovieDetailsFromData(data: data))
+          }
         }
       }
     }
@@ -62,10 +64,18 @@ class MovieDetailsViewModel {
     
     return nil
   }
- 
+  
 }
 
-
+// MARK: Int extension
+extension Int {
+  func minutesToHours() -> String {
+    let hours = self / 60
+    let minutes = self % 60
+    
+    return "\(hours)h \(minutes)min"
+  }
+}
 
 
 
