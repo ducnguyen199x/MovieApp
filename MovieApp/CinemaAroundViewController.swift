@@ -93,15 +93,16 @@ extension CinemaAroundViewController: UITableViewDelegate {
     
     let cinema = cinemaAroundViewModel.nearbyCinemasList[indexPath.row]
     
-    // Move camera to selected cinema
-    self.mapView.animate(to: GMSCameraPosition(target: CLLocationCoordinate2D(latitude: cinema.latitude!, longitude: cinema.longtitude!), zoom: 15, bearing: 0, viewingAngle: 0))
-    
     // Get direction from Google Map api
     cinemaAroundViewModel.fetchDirection(from: (currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), to: (cinema.latitude!, cinema.longtitude!), completionHandler: {
       (polyline) in
       
       // draw direction
       polyline.map = self.mapView
+      
+      // Zoom too see full direction
+      let bounds = GMSCoordinateBounds(path: polyline.path!)
+      self.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 50.0))
       
     })
     

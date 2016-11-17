@@ -338,7 +338,7 @@
                                             <outlet property="calendarView" destination="hEN-Vp-r36" id="qeF-6i-nre"/>
                                             <outlet property="movieIMDBLabel" destination="2RF-4q-Tl4" id="3He-Lg-zrH"/>
                                             <outlet property="movieImage" destination="PBa-qS-1oI" id="V1l-me-vIk"/>
-                                            <segue destination="16A-bd-jLy" kind="show" identifier="showDetailsView" id="y1O-Tk-AgX"/>
+                                            <segue destination="sYO-s7-2K6" kind="show" identifier="showDetailsView" id="7Us-xW-bku"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -367,10 +367,10 @@
             </objects>
             <point key="canvasLocation" x="1252" y="-1011.544227886057"/>
         </scene>
-        <!--Movie Details View Controller-->
+        <!--View Controller-->
         <scene sceneID="l2p-GV-bMf">
             <objects>
-                <viewController id="16A-bd-jLy" customClass="MovieDetailsViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="16A-bd-jLy" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2XQ-cY-PcQ"/>
                         <viewControllerLayoutGuide type="bottom" id="fB7-Jd-NUd"/>
@@ -519,9 +519,6 @@
                                         <state key="selected">
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="moreButtonClicked:" destination="16A-bd-jLy" eventType="touchUpInside" id="0zo-O4-wpC"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -575,9 +572,6 @@
                                     <constraint firstAttribute="height" constant="69" id="fpn-dE-LZb"/>
                                 </constraints>
                                 <state key="normal" image="bt_play"/>
-                                <connections>
-                                    <action selector="playButtonClicked:" destination="16A-bd-jLy" eventType="touchUpInside" id="zIk-pM-VbA"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -592,24 +586,48 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xwd-zi-Uas"/>
-                    <connections>
-                        <outlet property="descriptionLabel" destination="Es5-8h-cSg" id="8Eu-cj-DEK"/>
-                        <outlet property="directorLabel" destination="1I7-zI-m5l" id="y3e-gf-h4n"/>
-                        <outlet property="durationLabel" destination="ahI-bB-hJ3" id="sTs-Oa-Uoz"/>
-                        <outlet property="imdbPointLabel" destination="XoD-Xy-Vlz" id="db1-Dk-gOW"/>
-                        <outlet property="imdbStarImage" destination="mVi-1u-1b1" id="OBe-VF-dMu"/>
-                        <outlet property="movieNameLabel" destination="A6j-Fj-Gib" id="JZk-h0-d87"/>
-                        <outlet property="movieTypeLabel" destination="ZZ0-Ol-NVQ" id="sGc-sP-TgC"/>
-                        <outlet property="pgRatingLabel" destination="tCK-Oa-pXG" id="Gdk-ub-ygR"/>
-                        <outlet property="publishDateLabel" destination="aMk-2p-9Nk" id="KSo-5R-Tkn"/>
-                        <outlet property="starLabel" destination="Ian-CT-XnK" id="WTZ-5M-DPW"/>
-                        <outlet property="thumbnail" destination="v8h-7B-42k" id="ZAN-nW-ha1"/>
-                        <outlet property="writerLabel" destination="q4r-z7-ubx" id="nXR-AR-4Ih"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pn3-bw-ZOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.5999999999999" y="-1012.4437781109445"/>
+            <point key="canvasLocation" x="2711" y="-1012"/>
+        </scene>
+        <!--Movie Details View Controller-->
+        <scene sceneID="aQ9-XF-cgH">
+            <objects>
+                <viewController id="sYO-s7-2K6" customClass="MovieDetailsViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="36l-2e-2Rh"/>
+                        <viewControllerLayoutGuide type="bottom" id="JKj-9e-9oJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lwf-Mk-xmj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ENh-vk-5Iv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.33725490200000002" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="sYO-s7-2K6" id="r6z-kZ-Egy"/>
+                                    <outlet property="delegate" destination="sYO-s7-2K6" id="ysi-im-Eja"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JKj-9e-9oJ" firstAttribute="top" secondItem="ENh-vk-5Iv" secondAttribute="bottom" id="Sbw-w3-Gxh"/>
+                            <constraint firstAttribute="trailing" secondItem="ENh-vk-5Iv" secondAttribute="trailing" id="ZJd-sG-X89"/>
+                            <constraint firstItem="ENh-vk-5Iv" firstAttribute="leading" secondItem="lwf-Mk-xmj" secondAttribute="leading" id="cBu-en-Hel"/>
+                            <constraint firstItem="ENh-vk-5Iv" firstAttribute="top" secondItem="lwf-Mk-xmj" secondAttribute="top" id="gZO-RC-YfA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableview" destination="ENh-vk-5Iv" id="we6-Y3-UlA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HAg-xz-7CF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1997.5999999999999" y="-1012.4437781109445"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="4kx-x4-QY8">
@@ -758,7 +776,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kg8-g3-P3B" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Showing" image="ic_showing_normal" id="3ni-He-THK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="ic_back" backIndicatorTransitionMaskImage="ic_back" id="teD-Wc-ZOK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="ic_back" backIndicatorTransitionMaskImage="ic_back" id="teD-Wc-ZOK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
