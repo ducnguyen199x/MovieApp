@@ -19,12 +19,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mY2-PE-F9k">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="T3U-d1-hga"/>
+                            <constraint firstAttribute="height" constant="59.5" id="T3U-d1-hga"/>
                         </constraints>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="1" id="0HH-DL-byW">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="0HH-DL-byW">
                             <size key="itemSize" width="71" height="60"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -36,7 +36,6 @@
                     <constraint firstAttribute="trailing" secondItem="mY2-PE-F9k" secondAttribute="trailing" id="1AG-bz-oWh"/>
                     <constraint firstItem="mY2-PE-F9k" firstAttribute="leading" secondItem="buz-QD-DQz" secondAttribute="leading" id="6TW-fd-ssP"/>
                     <constraint firstItem="mY2-PE-F9k" firstAttribute="top" secondItem="buz-QD-DQz" secondAttribute="top" id="CWw-aW-nB8"/>
-                    <constraint firstItem="mY2-PE-F9k" firstAttribute="centerY" secondItem="buz-QD-DQz" secondAttribute="centerY" id="D7g-pN-8CR"/>
                     <constraint firstAttribute="bottom" secondItem="mY2-PE-F9k" secondAttribute="bottom" id="cmW-16-qdj"/>
                 </constraints>
             </tableViewCellContentView>

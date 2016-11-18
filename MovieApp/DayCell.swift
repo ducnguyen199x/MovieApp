@@ -13,4 +13,26 @@ class DayCell: UICollectionViewCell {
   @IBOutlet var DayOfWeekLabel: UILabel!
   @IBOutlet var DateLabel: UILabel!
   
+  let defaultTextColor = UIColor(red: 99/225, green: 99/225, blue: 99/225, alpha: 1)
+  let defaultBackgroundColor = UIColor(red: 42/225, green: 42/225, blue: 42/225, alpha: 1)
+  let selectedBackgroundColor = UIColor(red: 224/225, green: 50/225, blue: 70/225, alpha: 1)
+  let selectedTextColor = UIColor.white
+  
+  override var isSelected: Bool {
+    didSet {
+      if isSelected {
+        DayOfWeekLabel.backgroundColor = selectedBackgroundColor
+        DayOfWeekLabel.textColor = selectedTextColor
+        DateLabel.textColor = selectedTextColor
+        DateLabel.layer.borderColor = selectedTextColor.cgColor
+        
+      } else {
+        DayOfWeekLabel.backgroundColor = defaultBackgroundColor
+        DayOfWeekLabel.textColor = defaultTextColor
+        DateLabel.textColor = defaultTextColor
+        DateLabel.layer.borderColor = defaultBackgroundColor.cgColor
+        
+      }
+    }
+  }
 }

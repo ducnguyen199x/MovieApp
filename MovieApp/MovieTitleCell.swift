@@ -16,5 +16,4 @@ class MovieTitleCell: UITableViewCell {
   @IBOutlet var durationLabel: UILabel!
   @IBOutlet var publishDateLabel: UILabel!
   
-  
 }

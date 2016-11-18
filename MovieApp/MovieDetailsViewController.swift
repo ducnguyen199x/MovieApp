@@ -43,7 +43,8 @@ class MovieDetailsViewController: UIViewController {
     tableview.register(UINib(nibName: "MovieSummaryCell", bundle: nil), forCellReuseIdentifier: "MovieSummaryCell")
     tableview.register(UINib(nibName: "CalendarCell", bundle: nil), forCellReuseIdentifier: "CalendarCell")
     tableview.register(UINib(nibName: "CinemaScheduleCell", bundle: nil), forCellReuseIdentifier: "CinemaScheduleCell")
-//    FLEXManager.shared().showExplorer()
+    tableview.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellReuseIdentifier: "ScheduleCell")
+    FLEXManager.shared().showExplorer()
     
     loadData()
 
@@ -78,7 +79,7 @@ class MovieDetailsViewController: UIViewController {
 // MARK: UITableViewDataSource
 extension MovieDetailsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 8
+    return 10
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,20 +98,27 @@ extension MovieDetailsViewController: UITableViewDataSource {
       movieTitleCell.pgRatingLabel.text = movieDetails.pgRating
       movieTitleCell.imdbPointLabel.text = "\(movieDetails.imdb!) IMDB"
       movieTitleCell.publishDateLabel.text = movieDetails.getPublishDateString()
+      movieTitleCell.addSeparator(color: movieDetailsViewModel.separatorColor.cgColor, thickness: 0.5, leftInset: 20, rightInset: 20)
   
     } else if let movieSummaryCell = cell as? MovieSummaryCell {
       movieSummaryCell.delegate = self
       movieSummaryCell.descriptionLabel.text = movieDetails.description
       movieSummaryCell.directorLabel.text = movieDetails.getDirector()
       movieSummaryCell.starsLabel.text = movieDetails.getStars()
-      movieSummaryCell.separatorInset = UIEdgeInsetsMake(0, 10, 0, 10)
+
       
     } else if let calendarCell = cell as? CalendarCell {
       calendarCell.collectionView.register(UINib(nibName: "DayCell", bundle: nil), forCellWithReuseIdentifier: "DayCell")
       calendarCell.collectionView.delegate = self
       calendarCell.collectionView.dataSource = self
+      
     } else if let cinemaScheduleCell = cell as? CinemaScheduleCell {
-      cinemaScheduleCell.separatorInset = UIEdgeInsets.zero
+      cinemaScheduleCell.addSeparator(color: movieDetailsViewModel.separatorColor.cgColor, thickness: 1, leftInset: 0, rightInset: 0)
+      
+    } else if let scheduleCell = cell as? ScheduleCell {
+      scheduleCell.scheduleTableView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
+      scheduleCell.scheduleTableView.dataSource = scheduleCell
+      scheduleCell.scheduleTableView.reloadData()
     }
     
     return cell
@@ -119,15 +127,28 @@ extension MovieDetailsViewController: UITableViewDataSource {
 
 extension MovieDetailsViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//    let cellIdentifier = movieDetailsViewModel.cellIdentifierAtIndexPath(indexPath: indexPath)
-//    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-//
-//    return cell!.bounds.size.height
-    return UITableViewAutomaticDimension
+    if let cell = tableView.cellForRow(at: indexPath) as? ScheduleCell {
+  
+      return cell.height
+      
+    } else {
+      return UITableViewAutomaticDimension
+    }
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableViewAutomaticDimension
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: false)
+    if ((tableView.cellForRow(at: indexPath) as? CinemaScheduleCell) != nil) {
+      if let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row + 1, section: indexPath.section)) as? ScheduleCell {
+        tableView.beginUpdates()
+        cell.toggle()
+        tableView.endUpdates()
+      }
+    }
   }
 }
 
@@ -191,6 +212,9 @@ extension MovieDetailsViewController: UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegate
 extension MovieDetailsViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    print("check")
+  }
   
 }
 

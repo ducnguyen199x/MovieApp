@@ -15,6 +15,13 @@
 		F83329E61DD315FE0068EF73 /* CinemaAroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83329E51DD315FE0068EF73 /* CinemaAroundViewModel.swift */; };
 		F83329E81DD31ABA0068EF73 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83329E71DD31ABA0068EF73 /* Cinema.swift */; };
 		F83329EA1DD31FEC0068EF73 /* CinemaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83329E91DD31FEC0068EF73 /* CinemaCell.swift */; };
+		F8373A541DDEACD500926E6D /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8373A531DDEACD500926E6D /* UIExtension.swift */; };
+		F8373A581DDEDA6600926E6D /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8373A571DDEDA6600926E6D /* CategoryCell.xib */; };
+		F8373A5A1DDEDA7000926E6D /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8373A591DDEDA7000926E6D /* CategoryCell.swift */; };
+		F8373A5C1DDEDB6100926E6D /* TimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8373A5B1DDEDB6100926E6D /* TimeCell.xib */; };
+		F8373A5E1DDEDB6A00926E6D /* TimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8373A5D1DDEDB6A00926E6D /* TimeCell.swift */; };
+		F8373A601DDF0B0C00926E6D /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8373A5F1DDF0B0C00926E6D /* Schedule.swift */; };
+		F8373A621DDF0B6F00926E6D /* MovieSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8373A611DDF0B6F00926E6D /* MovieSession.swift */; };
 		F83789AF1DD1B1A700A28C4D /* MoviesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789AE1DD1B1A700A28C4D /* MoviesListViewModel.swift */; };
 		F83789B51DD1E28400A28C4D /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789B41DD1E28400A28C4D /* NewsCell.swift */; };
 		F83789B71DD1E2EA00A28C4D /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83789B61DD1E2EA00A28C4D /* NewsListViewModel.swift */; };
@@ -87,6 +94,13 @@
 		F83329E51DD315FE0068EF73 /* CinemaAroundViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaAroundViewModel.swift; sourceTree = "<group>"; };
 		F83329E71DD31ABA0068EF73 /* Cinema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
 		F83329E91DD31FEC0068EF73 /* CinemaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaCell.swift; sourceTree = "<group>"; };
+		F8373A531DDEACD500926E6D /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
+		F8373A571DDEDA6600926E6D /* CategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
+		F8373A591DDEDA7000926E6D /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		F8373A5B1DDEDB6100926E6D /* TimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeCell.xib; sourceTree = "<group>"; };
+		F8373A5D1DDEDB6A00926E6D /* TimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCell.swift; sourceTree = "<group>"; };
+		F8373A5F1DDF0B0C00926E6D /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		F8373A611DDF0B6F00926E6D /* MovieSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSession.swift; sourceTree = "<group>"; };
 		F83789AD1DD180D000A28C4D /* MovieApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		F83789AE1DD1B1A700A28C4D /* MoviesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesListViewModel.swift; sourceTree = "<group>"; };
 		F83789B41DD1E28400A28C4D /* NewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
@@ -189,6 +203,8 @@
 				F80BD1341DD97538007D0C5F /* MovieDetailsViewController.swift */,
 				F80BD1361DD97548007D0C5F /* MovieDetailsViewModel.swift */,
 				F89CBD821DD9C73C00413DEC /* MovieDetails.swift */,
+				F8373A5F1DDF0B0C00926E6D /* Schedule.swift */,
+				F8373A611DDF0B6F00926E6D /* MovieSession.swift */,
 				F8470C1C1DDC463300ACC821 /* View */,
 			);
 			name = MovieDetailsModule;
@@ -297,6 +313,10 @@
 				F851F2671DDD84AB002EC768 /* ScheduleCell.swift */,
 				F851F2691DDD84F1002EC768 /* CinemaScheduleCell.xib */,
 				F851F26B1DDD8503002EC768 /* CinemaScheduleCell.swift */,
+				F8373A571DDEDA6600926E6D /* CategoryCell.xib */,
+				F8373A591DDEDA7000926E6D /* CategoryCell.swift */,
+				F8373A5B1DDEDB6100926E6D /* TimeCell.xib */,
+				F8373A5D1DDEDB6A00926E6D /* TimeCell.swift */,
 			);
 			name = ScheduleCell;
 			sourceTree = "<group>";
@@ -363,6 +383,7 @@
 				F83329E21DD311460068EF73 /* CinemaAroundModule */,
 				F83789B31DD1E25200A28C4D /* NewsListModule */,
 				F83789B21DD1C28C00A28C4D /* MoviesListModule */,
+				F8373A531DDEACD500926E6D /* UIExtension.swift */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -500,6 +521,8 @@
 				F86987951DD022B3007C08F5 /* Main.storyboard in Resources */,
 				F851F2571DDD6618002EC768 /* CalendarCell.xib in Resources */,
 				F8EF59CE1DD429A6007B8C3D /* CinemaMarkerInfoView.xib in Resources */,
+				F8373A5C1DDEDB6100926E6D /* TimeCell.xib in Resources */,
+				F8373A581DDEDA6600926E6D /* CategoryCell.xib in Resources */,
 				F851F26A1DDD84F1002EC768 /* CinemaScheduleCell.xib in Resources */,
 				F8470C1B1DDC462900ACC821 /* ThumbnailCell.xib in Resources */,
 				F851F2531DDD4F4F002EC768 /* MovieSummaryCell.xib in Resources */,
@@ -667,9 +690,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8470C1E1DDC470900ACC821 /* ThumbnailCell.swift in Sources */,
+				F8373A621DDF0B6F00926E6D /* MovieSession.swift in Sources */,
 				F80BD1371DD97548007D0C5F /* MovieDetailsViewModel.swift in Sources */,
 				F892BA9B1DD05D2200A1E522 /* SubViewModel.swift in Sources */,
 				F851F2551DDD4F61002EC768 /* MovieSummaryCell.swift in Sources */,
+				F8373A5A1DDEDA7000926E6D /* CategoryCell.swift in Sources */,
 				F83789B51DD1E28400A28C4D /* NewsCell.swift in Sources */,
 				F80BD1351DD97538007D0C5F /* MovieDetailsViewController.swift in Sources */,
 				F892BA9D1DD068D300A1E522 /* APIData.swift in Sources */,
@@ -679,6 +704,7 @@
 				F851F2681DDD84AB002EC768 /* ScheduleCell.swift in Sources */,
 				F89CBD831DD9C73C00413DEC /* MovieDetails.swift in Sources */,
 				F851F2591DDD662B002EC768 /* CalendarCell.swift in Sources */,
+				F8373A541DDEACD500926E6D /* UIExtension.swift in Sources */,
 				F892BA921DD033CC00A1E522 /* MoviesListViewController.swift in Sources */,
 				F86987901DD022B3007C08F5 /* AppDelegate.swift in Sources */,
 				F83789BB1DD1E3FA00A28C4D /* News.swift in Sources */,
@@ -688,6 +714,8 @@
 				F83329E81DD31ABA0068EF73 /* Cinema.swift in Sources */,
 				F851F25B1DDD6C82002EC768 /* DayCell.swift in Sources */,
 				F893F5E41DDB172000144721 /* MoreButton.swift in Sources */,
+				F8373A601DDF0B0C00926E6D /* Schedule.swift in Sources */,
+				F8373A5E1DDEDB6A00926E6D /* TimeCell.swift in Sources */,
 				F892BA951DD035DA00A1E522 /* MovieCell.swift in Sources */,
 				F851F26C1DDD8503002EC768 /* CinemaScheduleCell.swift in Sources */,
 				F83789B71DD1E2EA00A28C4D /* NewsListViewModel.swift in Sources */,
