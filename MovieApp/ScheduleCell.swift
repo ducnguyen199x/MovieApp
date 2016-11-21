@@ -2,7 +2,7 @@
 //  ScheduleCell.swift
 //  MovieApp
 //
-//  Created by Nguyen Thanh Duc on 11/17/16.
+//  Created by Nguyen Thanh Duc on 11/21/16.
 //  Copyright © 2016 NguyenThanhDuc. All rights reserved.
 //
 
@@ -10,12 +10,9 @@ import UIKit
 
 class ScheduleCell: UITableViewCell {
   
-  @IBOutlet var cinemaNameLabel: UILabel!
-  @IBOutlet var scheduleTableView: UITableView!
-  
-  
+  @IBOutlet var tableView: UITableView!
+ 
   var height: CGFloat = 0
-  
   func toggle() {
     if height == 0 {
       height = 360
@@ -32,48 +29,11 @@ extension ScheduleCell: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
-    cell.collectionView.register(UINib(nibName: "TimeCell", bundle: nil), forCellWithReuseIdentifier: "TimeCell")
-    cell.collectionView.dataSource = self
+    let cell = tableView.dequeueReusableCell(withIdentifier: "CinemaScheduleCell", for: indexPath) as! CinemaScheduleCell
+    cell.scheduleTableView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
+    cell.scheduleTableView.dataSource = cell
+    cell.scheduleTableView.reloadData()
     
     return cell
   }
 }
-
-// MARK: UITableViewDelegate
-extension ScheduleCell: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableViewAutomaticDimension
-  }
-  
-  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableViewAutomaticDimension
-  }
-}
-
-// MARK: UITableViewDelegate
-extension ScheduleCell: UICollectionViewDataSource {
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 1
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 2
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeCell", for: indexPath) as! TimeCell
-    
-    return cell
-  }
-}
-
-
-
-
-
-
-
-
-
-

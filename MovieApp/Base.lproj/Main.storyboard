@@ -277,7 +277,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PBa-qS-1oI">
-                                                    <rect key="frame" x="-3" y="-1" width="361" height="155"/>
+                                                    <rect key="frame" x="-2.5" y="-1" width="360" height="155"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="155" id="URh-tN-Ulj"/>
                                                         <constraint firstAttribute="width" constant="360" id="WMt-ej-ZhV"/>
@@ -418,7 +418,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Kg8-g3-P3B" kind="relationship" relationship="viewControllers" id="2mR-lX-C7W"/>
-                        <segue destination="WRc-Qu-c6Q" kind="relationship" relationship="viewControllers" id="rQp-Yv-ZtS"/>
+                        <segue destination="nmH-tk-vgf" kind="relationship" relationship="viewControllers" id="rQp-Yv-ZtS"/>
                         <segue destination="Ujc-f7-Wec" kind="relationship" relationship="viewControllers" id="4iz-mT-h15"/>
                         <segue destination="YCF-X1-7dx" kind="relationship" relationship="viewControllers" id="EnJ-le-U9e"/>
                     </connections>
@@ -430,7 +430,7 @@
         <!--Upcoming-->
         <scene sceneID="hOb-KX-TsM">
             <objects>
-                <viewController id="WRc-Qu-c6Q" userLabel="Upcoming" customClass="MoviesListViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="WRc-Qu-c6Q" userLabel="Upcoming" customClass="MoviesListViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lHP-i2-34Z"/>
                         <viewControllerLayoutGuide type="bottom" id="Mma-OC-U2b"/>
@@ -440,7 +440,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZAi-Mr-sKe">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zCC-0B-t71">
                                     <size key="itemSize" width="355" height="153"/>
@@ -457,7 +457,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fRS-o5-JbW">
-                                                    <rect key="frame" x="-3" y="-1" width="361" height="155"/>
+                                                    <rect key="frame" x="-2.5" y="-1" width="360" height="155"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="360" id="G7F-EB-4ka"/>
                                                         <constraint firstAttribute="height" constant="155" id="uVB-eK-3Tw"/>
@@ -518,6 +518,7 @@
                                             <outlet property="calendarView" destination="45i-dw-awX" id="4Kv-Cv-sZg"/>
                                             <outlet property="movieIMDBLabel" destination="pK1-S8-U8c" id="q72-hS-h8n"/>
                                             <outlet property="movieImage" destination="fRS-o5-JbW" id="VXL-gU-FAa"/>
+                                            <segue destination="sYO-s7-2K6" kind="show" identifier="showDetailsView" id="ktQ-nV-3XD"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -535,7 +536,7 @@
                             <constraint firstItem="Mma-OC-U2b" firstAttribute="top" secondItem="ZAi-Mr-sKe" secondAttribute="bottom" id="ylH-WE-2cy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Upcoming" image="ic_upcoming_normal" id="wi7-ZS-YpP"/>
+                    <navigationItem key="navigationItem" id="mnO-oQ-acz"/>
                     <connections>
                         <outlet property="collectionView" destination="ZAi-Mr-sKe" id="PZ2-qh-mjW"/>
                         <outlet property="viewModel" destination="Acz-K5-TqR" id="KCx-IJ-Gwx"/>
@@ -544,7 +545,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozr-me-yaY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="Acz-K5-TqR" customClass="UpcomingViewModel" customModule="MovieApp" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="573.60000000000002" y="-267.61619190404798"/>
+            <point key="canvasLocation" x="1252" y="-268"/>
         </scene>
         <!--Showing-->
         <scene sceneID="0Zt-ht-VmH">
@@ -552,7 +553,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kg8-g3-P3B" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Showing" image="ic_showing_normal" id="3ni-He-THK"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="ic_back" backIndicatorTransitionMaskImage="ic_back" id="teD-Wc-ZOK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="ic_back" backIndicatorTransitionMaskImage="ic_back" id="teD-Wc-ZOK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -569,6 +570,26 @@
             </objects>
             <point key="canvasLocation" x="556" y="-1011"/>
         </scene>
+        <!--Upcoming-->
+        <scene sceneID="MR6-lz-wAG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nmH-tk-vgf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Upcoming" image="ic_upcoming_normal" id="wi7-ZS-YpP"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="ic_back" backIndicatorTransitionMaskImage="ic_back" id="lGl-J8-6Ye">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WRc-Qu-c6Q" kind="relationship" relationship="rootViewController" id="IBB-dt-aus"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3hP-Sr-uWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="573.60000000000002" y="-267.61619190404798"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cinema_holder" width="31" height="31"/>
@@ -581,4 +602,7 @@
         <image name="ic_upcoming_normal" width="18" height="21"/>
         <image name="news_gradient_cover" width="375" height="164"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ktQ-nV-3XD"/>
+    </inferredMetricsTieBreakers>
 </document>

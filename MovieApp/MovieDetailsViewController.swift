@@ -19,7 +19,7 @@ class MovieDetailsViewController: UIViewController {
   
   let movieDetailsViewModel = MovieDetailsViewModel()
   var movieID: String?
-  var movieDetails: MovieDetails?
+  var today: Date?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,7 +42,7 @@ class MovieDetailsViewController: UIViewController {
     tableview.register(UINib(nibName: "MovieTitleCell", bundle: nil), forCellReuseIdentifier: "MovieTitleCell")
     tableview.register(UINib(nibName: "MovieSummaryCell", bundle: nil), forCellReuseIdentifier: "MovieSummaryCell")
     tableview.register(UINib(nibName: "CalendarCell", bundle: nil), forCellReuseIdentifier: "CalendarCell")
-    tableview.register(UINib(nibName: "CinemaScheduleCell", bundle: nil), forCellReuseIdentifier: "CinemaScheduleCell")
+    tableview.register(UINib(nibName: "CinemaGroupCell", bundle: nil), forCellReuseIdentifier: "CinemaGroupCell")
     tableview.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellReuseIdentifier: "ScheduleCell")
     FLEXManager.shared().showExplorer()
     
@@ -63,10 +63,8 @@ class MovieDetailsViewController: UIViewController {
   func loadData() {
     movieDetailsViewModel.fetchMovieDetails(id: movieID) {
       (movieDetails) in
-    
-      guard let movieDetails = movieDetails else { return }
       
-      self.movieDetails = movieDetails
+      self.today = Date()
       
       self.tableview.reloadData()
       
@@ -79,13 +77,22 @@ class MovieDetailsViewController: UIViewController {
 // MARK: UITableViewDataSource
 extension MovieDetailsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    var numberOfRows = 4
+    
+    // add row base on number of cinema group (2 rows per group: 1 for group name, 1 for schedule)
+    if let movieDetails = movieDetailsViewModel.movieDetails {
+      numberOfRows += movieDetails.filterPCinema() * 2
+    }
+
+    return numberOfRows
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cellIdentifier = movieDetailsViewModel.cellIdentifierAtIndexPath(indexPath: indexPath)
     let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-    guard let movieDetails = movieDetails else { return cell }
+    guard let movieDetails = movieDetailsViewModel.movieDetails else { return cell }
+    
+    var cinemaGroup = Array((movieDetailsViewModel.movieDetails?.pCinemaList.keys)!)
     
     // load data for specific cell
     if let thumbnailCell = cell as? ThumbnailCell {
@@ -111,14 +118,20 @@ extension MovieDetailsViewController: UITableViewDataSource {
       calendarCell.collectionView.register(UINib(nibName: "DayCell", bundle: nil), forCellWithReuseIdentifier: "DayCell")
       calendarCell.collectionView.delegate = self
       calendarCell.collectionView.dataSource = self
+      calendarCell.collectionView.selectItem(at: IndexPath(row: 0, section: 0) , animated: true, scrollPosition: .left)
       
-    } else if let cinemaScheduleCell = cell as? CinemaScheduleCell {
-      cinemaScheduleCell.addSeparator(color: movieDetailsViewModel.separatorColor.cgColor, thickness: 1, leftInset: 0, rightInset: 0)
+    } else if let cinemaGroupCell = cell as? CinemaGroupCell {
+      cinemaGroupCell.addSeparator(color: movieDetailsViewModel.separatorColor.cgColor, thickness: 1, leftInset: 0, rightInset: 0)
+      
+      let group = cinemaGroup[(indexPath.row - 4)/2]
+      if let value = movieDetailsViewModel.movieDetails?.pCinemaList[group] {
+        cinemaGroupCell.cinemaNameLabel.text = "\(group) (\(value))"
+      }
       
     } else if let scheduleCell = cell as? ScheduleCell {
-      scheduleCell.scheduleTableView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
-      scheduleCell.scheduleTableView.dataSource = scheduleCell
-      scheduleCell.scheduleTableView.reloadData()
+      scheduleCell.tableView.register(UINib(nibName: "CinemaScheduleCell", bundle: nil), forCellReuseIdentifier: "CinemaScheduleCell")
+      scheduleCell.tableView.dataSource = scheduleCell
+      scheduleCell.tableView.reloadData()
     }
     
     return cell
@@ -142,7 +155,7 @@ extension MovieDetailsViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: false)
-    if ((tableView.cellForRow(at: indexPath) as? CinemaScheduleCell) != nil) {
+    if ((tableView.cellForRow(at: indexPath) as? CinemaGroupCell) != nil) {
       if let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row + 1, section: indexPath.section)) as? ScheduleCell {
         tableView.beginUpdates()
         cell.toggle()
@@ -206,6 +219,13 @@ extension MovieDetailsViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DayCell", for: indexPath) as! DayCell
     
+    let timeInterval = Double(86400 * indexPath.row)
+    cell.date = Date(timeInterval: timeInterval, since: self.today!)
+    cell.updateDate()
+    if indexPath.row == 0 {
+      cell.DayOfWeekLabel.text = "Today"
+    }
+    
     return cell
   }
 }
@@ -213,9 +233,17 @@ extension MovieDetailsViewController: UICollectionViewDataSource {
 // MARK: UICollectionViewDelegate
 extension MovieDetailsViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    print("check")
+
+    guard let selectedCell = collectionView.cellForItem(at: indexPath) as? DayCell else { return }
+    
+    movieDetailsViewModel.fetchScheduleByMovie(id: self.movieID, date: selectedCell.getShortDate(), completionHandler: {
+      
+      self.tableview.reloadData()
+
+    })
+    
+    
   }
-  
 }
 
 

@@ -21,6 +21,8 @@ class MovieDetails: Decodable {
   let imdb: Double?
   let actorsList: [[String: String]]?
   let pgRating: String?
+  var schedules = [Schedule]()
+  var pCinemaList = [String: Int]()
   
   required init?(json: JSON) {
     self.id = "film_id" <~~ json
@@ -86,6 +88,21 @@ class MovieDetails: Decodable {
     
     return actorsString
 
+  }
+  
+  // count number of Pcinema
+  func filterPCinema() -> Int {
+    pCinemaList.removeAll()
+    for schedule in schedules {
+      guard let name = schedule.pCinemaName else { continue }
+      if pCinemaList.keys.contains(name) {
+        pCinemaList.updateValue(pCinemaList[name]! + 1, forKey: name)
+      } else {
+        pCinemaList.updateValue(1, forKey: name)
+      }
+    }
+    
+    return pCinemaList.count
   }
 }
 

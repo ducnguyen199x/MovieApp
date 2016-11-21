@@ -18,6 +18,10 @@ class DayCell: UICollectionViewCell {
   let selectedBackgroundColor = UIColor(red: 224/225, green: 50/225, blue: 70/225, alpha: 1)
   let selectedTextColor = UIColor.white
   
+  var date: Date?
+  let dateFormatter = DateFormatter()
+  let calendar = Calendar.current
+  
   override var isSelected: Bool {
     didSet {
       if isSelected {
@@ -35,4 +39,37 @@ class DayCell: UICollectionViewCell {
       }
     }
   }
+  
+  func updateDate() {
+    guard let date = date else { return }
+    dateFormatter.dateFormat = "EEEE"
+    
+    // day of week
+    let dayOfWeek = dateFormatter.string(from: date)
+    let index = dayOfWeek.index(dayOfWeek.startIndex, offsetBy: 3)
+    DayOfWeekLabel.text = dateFormatter.string(from: date).substring(to: index)
+    
+    // actual date
+    let day = calendar.component(.day, from: date)
+    let month = calendar.component(.month, from: date)
+    DateLabel.text = "\(day)/\(month)"
+  }
+  
+  func getShortDate() -> String {
+    guard let date = date else { return ""}
+    
+    dateFormatter.dateStyle = .short
+    dateFormatter.timeStyle = .none
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    
+    return dateFormatter.string(from: date)
+  }
 }
+
+
+
+
+
+
+
+

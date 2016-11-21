@@ -6,50 +6,35 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ima-OI-hMo" customClass="ScheduleCell" customModule="MovieApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="340"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="330" id="EQw-ZP-DMJ" customClass="ScheduleCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ima-OI-hMo" id="8LB-84-C91">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EQw-ZP-DMJ" id="wKv-Od-wWb">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="329"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mega GS Hung Vuong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbv-Gr-aml">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                        <color key="backgroundColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="50" id="9xM-70-2VK"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="fd7-dj-V5k">
-                        <rect key="frame" x="0.0" y="50" width="375" height="289"/>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q6G-K4-cD5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="329"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </tableView>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="fd7-dj-V5k" firstAttribute="leading" secondItem="8LB-84-C91" secondAttribute="leading" id="3ve-Io-Uxd"/>
-                    <constraint firstAttribute="bottom" secondItem="fd7-dj-V5k" secondAttribute="bottom" id="MPH-f0-mqo"/>
-                    <constraint firstItem="fd7-dj-V5k" firstAttribute="top" secondItem="nbv-Gr-aml" secondAttribute="bottom" id="aD8-3q-tqQ"/>
-                    <constraint firstItem="nbv-Gr-aml" firstAttribute="top" secondItem="8LB-84-C91" secondAttribute="top" id="dJN-e1-oeI"/>
-                    <constraint firstAttribute="trailing" secondItem="fd7-dj-V5k" secondAttribute="trailing" id="xcG-9b-kiV"/>
-                    <constraint firstAttribute="trailing" secondItem="nbv-Gr-aml" secondAttribute="trailing" id="yK3-uz-PBU"/>
-                    <constraint firstItem="nbv-Gr-aml" firstAttribute="leading" secondItem="8LB-84-C91" secondAttribute="leading" id="zxu-4f-Ljg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="q6G-K4-cD5" secondAttribute="trailing" constant="-8" id="HTO-ZL-aTv"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="q6G-K4-cD5" secondAttribute="bottom" constant="-8" id="KzF-Yz-qFM"/>
+                    <constraint firstItem="q6G-K4-cD5" firstAttribute="leading" secondItem="wKv-Od-wWb" secondAttribute="leadingMargin" constant="-8" id="Pzj-uc-TvL"/>
+                    <constraint firstItem="q6G-K4-cD5" firstAttribute="top" secondItem="wKv-Od-wWb" secondAttribute="topMargin" constant="-8" id="j4b-Jj-dTF"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="cinemaNameLabel" destination="nbv-Gr-aml" id="cYC-hL-zE3"/>
-                <outlet property="scheduleTableView" destination="fd7-dj-V5k" id="Kh2-dT-TaS"/>
+                <outlet property="tableView" destination="q6G-K4-cD5" id="fZp-GW-XAY"/>
             </connections>
-            <point key="canvasLocation" x="-1099.5" y="-456"/>
+            <point key="canvasLocation" x="-424.5" y="-117"/>
         </tableViewCell>
     </objects>
 </document>

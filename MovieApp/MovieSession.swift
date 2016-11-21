@@ -17,7 +17,12 @@ class MovieSession: Decodable {
 
   required init?(json: JSON) {
     self.id = "session_id" <~~ json
-    self.time = "session_time" <~~ json
     self.statusID = "status_id" <~~ json
+    
+    let dateString: String? = "session_time" <~~ json
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    
+    self.time = dateFormatter.date(from: dateString!)
   }
 }
