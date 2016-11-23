@@ -22,6 +22,15 @@ class DayCell: UICollectionViewCell {
   let dateFormatter = DateFormatter()
   let calendar = Calendar.current
   
+  override func awakeFromNib() {
+    DayOfWeekLabel.backgroundColor = defaultBackgroundColor
+    DayOfWeekLabel.textColor = defaultTextColor
+    DateLabel.textColor = defaultTextColor
+    DayOfWeekLabel.layer.borderWidth = 0.5
+    DateLabel.layer.borderWidth = 0.5
+    DateLabel.layer.borderColor = defaultBackgroundColor.cgColor
+  }
+  
   override var isSelected: Bool {
     didSet {
       if isSelected {

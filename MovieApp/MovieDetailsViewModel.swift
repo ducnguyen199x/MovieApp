@@ -188,12 +188,12 @@ extension MovieDetailsViewModel {
   func cellIdentifierAtIndexPath(indexPath: IndexPath) -> String {
     let identifiers = ["ThumbnailCell", "MovieTitleCell", "MovieSummaryCell", "CalendarCell", "CinemaGroupCell", "ScheduleCell"]
     
-    if indexPath.row >= identifiers.count - 1 && indexPath.row % 2 == 0 {
-      return "CinemaGroupCell"
-    } else if indexPath.row >= identifiers.count - 1 && indexPath.row % 2 != 0 {
-      return "ScheduleCell"
-    } else {
+    if indexPath.section == 0 {
       return identifiers[indexPath.row]
+    } else if indexPath.row % 2 == 0 {
+      return "CinemaGroupCell"
+    } else {
+      return "ScheduleCell"
     }
   }
 }

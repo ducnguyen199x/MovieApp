@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wFU-xP-WS1">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wFU-xP-WS1">
                         <rect key="frame" x="0.0" y="-1.5" width="375" height="161"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="375" id="ouJ-V8-aJC"/>
@@ -47,7 +47,9 @@
                     <constraint firstItem="67n-Tx-6XH" firstAttribute="centerX" secondItem="wFU-xP-WS1" secondAttribute="centerX" id="iCv-y4-NLt"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="playButton" destination="67n-Tx-6XH" id="xdl-NM-xby"/>
                 <outlet property="thumbnail" destination="wFU-xP-WS1" id="0oQ-nW-tuj"/>
             </connections>
             <point key="canvasLocation" x="-98" y="-34"/>

@@ -47,6 +47,8 @@
 		F869879A1DD022B3007C08F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F86987981DD022B3007C08F5 /* LaunchScreen.storyboard */; };
 		F86987A51DD022B3007C08F5 /* MovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86987A41DD022B3007C08F5 /* MovieAppTests.swift */; };
 		F86987B01DD022B3007C08F5 /* MovieAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86987AF1DD022B3007C08F5 /* MovieAppUITests.swift */; };
+		F86B03721DE578A90037959B /* VideoControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86B03711DE578A90037959B /* VideoControlView.xib */; };
+		F86B03741DE578B50037959B /* VideoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86B03731DE578B50037959B /* VideoControlView.swift */; };
 		F892BA901DD02D0800A1E522 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F892BA8F1DD02D0800A1E522 /* CustomTabBarController.swift */; };
 		F892BA921DD033CC00A1E522 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F892BA911DD033CC00A1E522 /* MoviesListViewController.swift */; };
 		F892BA951DD035DA00A1E522 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F892BA941DD035DA00A1E522 /* MovieCell.swift */; };
@@ -136,6 +138,8 @@
 		F86987AB1DD022B3007C08F5 /* MovieAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86987AF1DD022B3007C08F5 /* MovieAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAppUITests.swift; sourceTree = "<group>"; };
 		F86987B11DD022B4007C08F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F86B03711DE578A90037959B /* VideoControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoControlView.xib; sourceTree = "<group>"; };
+		F86B03731DE578B50037959B /* VideoControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoControlView.swift; sourceTree = "<group>"; };
 		F892BA8F1DD02D0800A1E522 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		F892BA911DD033CC00A1E522 /* MoviesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
 		F892BA941DD035DA00A1E522 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
@@ -266,7 +270,6 @@
 			isa = PBXGroup;
 			children = (
 				F851F2621DDD846F002EC768 /* Schedule */,
-				F893F5E31DDB172000144721 /* MoreButton.swift */,
 				F851F25F1DDD6CC5002EC768 /* ThumbnailCell */,
 				F851F25E1DDD6CBB002EC768 /* MovieTitleCell */,
 				F851F25D1DDD6C9B002EC768 /* MovieSummaryCell */,
@@ -291,6 +294,7 @@
 			children = (
 				F851F2521DDD4F4F002EC768 /* MovieSummaryCell.xib */,
 				F851F2541DDD4F61002EC768 /* MovieSummaryCell.swift */,
+				F893F5E31DDB172000144721 /* MoreButton.swift */,
 			);
 			name = MovieSummaryCell;
 			sourceTree = "<group>";
@@ -309,6 +313,8 @@
 			children = (
 				F8470C1A1DDC462900ACC821 /* ThumbnailCell.xib */,
 				F8470C1D1DDC470900ACC821 /* ThumbnailCell.swift */,
+				F86B03711DE578A90037959B /* VideoControlView.xib */,
+				F86B03731DE578B50037959B /* VideoControlView.swift */,
 			);
 			name = ThumbnailCell;
 			sourceTree = "<group>";
@@ -316,16 +322,16 @@
 		F851F2621DDD846F002EC768 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				F851F2651DDD849B002EC768 /* CinemaScheduleCell.xib */,
-				F851F2671DDD84AB002EC768 /* CinemaScheduleCell.swift */,
 				F851F2691DDD84F1002EC768 /* CinemaGroupCell.xib */,
 				F851F26B1DDD8503002EC768 /* CinemaGroupCell.swift */,
+				F8A338601DE302D100452915 /* ScheduleCell.swift */,
+				F8A338621DE302DD00452915 /* ScheduleCell.xib */,
+				F851F2651DDD849B002EC768 /* CinemaScheduleCell.xib */,
+				F851F2671DDD84AB002EC768 /* CinemaScheduleCell.swift */,
 				F8373A571DDEDA6600926E6D /* CategoryCell.xib */,
 				F8373A591DDEDA7000926E6D /* CategoryCell.swift */,
 				F8373A5B1DDEDB6100926E6D /* TimeCell.xib */,
 				F8373A5D1DDEDB6A00926E6D /* TimeCell.swift */,
-				F8A338601DE302D100452915 /* ScheduleCell.swift */,
-				F8A338621DE302DD00452915 /* ScheduleCell.xib */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
@@ -531,6 +537,7 @@
 				F86987951DD022B3007C08F5 /* Main.storyboard in Resources */,
 				F851F2571DDD6618002EC768 /* CalendarCell.xib in Resources */,
 				F8EF59CE1DD429A6007B8C3D /* CinemaMarkerInfoView.xib in Resources */,
+				F86B03721DE578A90037959B /* VideoControlView.xib in Resources */,
 				F8373A5C1DDEDB6100926E6D /* TimeCell.xib in Resources */,
 				F8373A581DDEDA6600926E6D /* CategoryCell.xib in Resources */,
 				F851F26A1DDD84F1002EC768 /* CinemaGroupCell.xib in Resources */,
@@ -708,6 +715,7 @@
 				F83789B51DD1E28400A28C4D /* NewsCell.swift in Sources */,
 				F80BD1351DD97538007D0C5F /* MovieDetailsViewController.swift in Sources */,
 				F892BA9D1DD068D300A1E522 /* APIData.swift in Sources */,
+				F86B03741DE578B50037959B /* VideoControlView.swift in Sources */,
 				F8EF59CC1DD42497007B8C3D /* CinemaMarker.swift in Sources */,
 				F892BA901DD02D0800A1E522 /* CustomTabBarController.swift in Sources */,
 				F8EF59D01DD42CFD007B8C3D /* CinemaMarkerInfoView.swift in Sources */,

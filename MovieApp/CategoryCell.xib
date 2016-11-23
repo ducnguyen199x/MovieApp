@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBU-M9-Rl6">
-                        <rect key="frame" x="0.0" y="25" width="68" height="21"/>
+                        <rect key="frame" x="0.0" y="8.5" width="68" height="54.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="68" id="SNr-mD-CKD"/>
@@ -42,11 +42,12 @@
                 </subviews>
                 <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="e0a-wR-MbJ" secondAttribute="bottom" id="21T-kj-jk5"/>
                     <constraint firstItem="GBU-M9-Rl6" firstAttribute="centerY" secondItem="Bxi-5T-2no" secondAttribute="centerY" id="AjH-pt-yeT"/>
-                    <constraint firstItem="e0a-wR-MbJ" firstAttribute="top" secondItem="Bxi-5T-2no" secondAttribute="topMargin" id="FNw-D8-K8I"/>
+                    <constraint firstItem="GBU-M9-Rl6" firstAttribute="height" secondItem="e0a-wR-MbJ" secondAttribute="height" id="C0U-Yl-zDT"/>
                     <constraint firstAttribute="trailingMargin" secondItem="e0a-wR-MbJ" secondAttribute="trailing" constant="20" id="Msh-Zu-HZh"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="e0a-wR-MbJ" secondAttribute="bottom" id="cJe-26-m6W"/>
                     <constraint firstAttribute="leadingMargin" secondItem="GBU-M9-Rl6" secondAttribute="leading" constant="8" id="h5g-AA-bWp"/>
+                    <constraint firstItem="e0a-wR-MbJ" firstAttribute="top" secondItem="Bxi-5T-2no" secondAttribute="topMargin" id="hK2-Fd-FaY"/>
                     <constraint firstItem="e0a-wR-MbJ" firstAttribute="leading" secondItem="GBU-M9-Rl6" secondAttribute="trailing" id="yKY-nw-cwZ"/>
                 </constraints>
             </tableViewCellContentView>

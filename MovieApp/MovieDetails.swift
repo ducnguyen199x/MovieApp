@@ -104,6 +104,11 @@ class MovieDetails: Decodable {
     
     return pCinemaList.count
   }
+  
+  // get schedules by pcinema name
+  func getSchedules(byPCinemaName pCinema: String) -> [Schedule] {
+    return schedules.filter { $0.pCinemaName == pCinema }
+  }
 }
 
 
