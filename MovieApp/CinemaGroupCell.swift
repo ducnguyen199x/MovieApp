@@ -13,4 +13,5 @@ class CinemaGroupCell: UITableViewCell {
   @IBOutlet var cinemaIcon: UIImageView!
   @IBOutlet var cinemaNameLabel: UILabel!
   
+
 }

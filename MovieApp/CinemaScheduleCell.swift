@@ -13,22 +13,26 @@ class CinemaScheduleCell: UITableViewCell {
   @IBOutlet var cinemaNameLabel: UILabel!
   @IBOutlet var scheduleTableView: UITableView!
 
-  var sessionGroup = [MovieSessionGroup]()
+  var sessionGroups = [MovieSessionGroup]()
   
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    scheduleTableView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
+  }
 }
+
+
 
 // MARK: UITableViewDataSource
 extension CinemaScheduleCell: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sessionGroup.count
+    return sessionGroups.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
-    cell.collectionView.register(UINib(nibName: "TimeCell", bundle: nil), forCellWithReuseIdentifier: "TimeCell")    
-    cell.categoryLabel.text = "\(sessionGroup[indexPath.row].versionID!)"
-    cell.sessions = sessionGroup[indexPath.row].sessions
-    cell.collectionView.dataSource = cell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell 
+    cell.sessionGroup = sessionGroups[indexPath.row]
+    cell.loadCategory()
     cell.collectionView.reloadData()
     
     return cell
@@ -40,9 +44,7 @@ extension CinemaScheduleCell: UITableViewDataSource {
 extension CinemaScheduleCell: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if let cell = tableView.cellForRow(at: indexPath) as? CategoryCell {
-      print(cell.collectionView.contentSize.height)
       return cell.collectionView.contentSize.height + 20
-      
     }
     return 200
   }

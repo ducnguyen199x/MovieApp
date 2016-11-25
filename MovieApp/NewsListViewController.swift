@@ -16,6 +16,7 @@ class NewsListViewController: UIViewController {
   
   let newsListViewModel = NewsListViewModel()
   let disposeBag = DisposeBag()
+  var refreshControl: UIRefreshControl?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -31,12 +32,42 @@ class NewsListViewController: UIViewController {
       }, onError: nil, onCompleted: nil, onDisposed: nil)
     .addDisposableTo(disposeBag)
     
+    refreshControl = UIRefreshControl()
+    refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    
+    if #available(iOS 10.0, *) {
+      collectionView.refreshControl = refreshControl
+    } else {
+      // Fallback on earlier versions
+    }
+    
+    newsListViewModel.fetchNews(completionHandler: nil)
   }
   
   // only load data when view is shown
-  override func viewDidAppear(_ animated: Bool) {
-    newsListViewModel.fetchNews()
+  override func viewWillAppear(_ animated: Bool) {
+    navigationController?.navigationBar.isHidden = true
+    
   }
+  
+  // Prepare data for segue
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showNewsDetails" {
+      guard let destinationController = segue.destination as? NewsDetailsViewController,
+      let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first else { return }
+      
+      destinationController.newsID = newsListViewModel.newsList[selectedIndexPath.row].id
+    }
+  }
+  
+  // Refresh data
+  func refreshData() {
+    newsListViewModel.fetchNews() {
+      self.collectionView.reloadData()
+      self.refreshControl?.endRefreshing()
+    }
+  }
+  
 }
 
 // MARK: UICollectionViewDataSource
@@ -63,5 +94,7 @@ extension NewsListViewController: UICollectionViewDataSource {
 
 // MARK: UICollectionViewDelegate
 extension NewsListViewController: UICollectionViewDelegate {
-  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+  }
 }

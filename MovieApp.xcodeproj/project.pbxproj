@@ -63,6 +63,9 @@
 		F8EF59CC1DD42497007B8C3D /* CinemaMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EF59CB1DD42497007B8C3D /* CinemaMarker.swift */; };
 		F8EF59CE1DD429A6007B8C3D /* CinemaMarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8EF59CD1DD429A6007B8C3D /* CinemaMarkerInfoView.xib */; };
 		F8EF59D01DD42CFD007B8C3D /* CinemaMarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EF59CF1DD42CFD007B8C3D /* CinemaMarkerInfoView.swift */; };
+		F8F8C8DF1DE7FA5E00743829 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8C8DE1DE7FA5E00743829 /* NewsDetailsViewController.swift */; };
+		F8F8C8E11DE7FA6B00743829 /* NewsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8C8E01DE7FA6B00743829 /* NewsDetails.swift */; };
+		F8F8C8E31DE7FAB800743829 /* NewsDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F8C8E21DE7FAB800743829 /* NewsDetailsViewModel.swift */; };
 		FBDC73566DD9F7BF576AC9D3 /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CCCA7BAED63B6ABB610BC6 /* Pods_MovieApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +157,9 @@
 		F8EF59CB1DD42497007B8C3D /* CinemaMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaMarker.swift; sourceTree = "<group>"; };
 		F8EF59CD1DD429A6007B8C3D /* CinemaMarkerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CinemaMarkerInfoView.xib; sourceTree = "<group>"; };
 		F8EF59CF1DD42CFD007B8C3D /* CinemaMarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaMarkerInfoView.swift; sourceTree = "<group>"; };
+		F8F8C8DE1DE7FA5E00743829 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
+		F8F8C8E01DE7FA6B00743829 /* NewsDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetails.swift; sourceTree = "<group>"; };
+		F8F8C8E21DE7FAB800743829 /* NewsDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,6 +369,7 @@
 			children = (
 				F83789AC1DD1809800A28C4D /* API */,
 				F892BA991DD05CE200A1E522 /* Modules */,
+				F8373A531DDEACD500926E6D /* UIExtension.swift */,
 				F892BA8F1DD02D0800A1E522 /* CustomTabBarController.swift */,
 				F869878F1DD022B3007C08F5 /* AppDelegate.swift */,
 				F86987931DD022B3007C08F5 /* Main.storyboard */,
@@ -394,11 +401,11 @@
 		F892BA991DD05CE200A1E522 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				F80BD1331DD9751F007D0C5F /* MovieDetailsModule */,
 				F83329E21DD311460068EF73 /* CinemaAroundModule */,
+				F8F8C8DD1DE7FA3300743829 /* NewsDetailModule */,
 				F83789B31DD1E25200A28C4D /* NewsListModule */,
 				F83789B21DD1C28C00A28C4D /* MoviesListModule */,
-				F8373A531DDEACD500926E6D /* UIExtension.swift */,
+				F80BD1331DD9751F007D0C5F /* MovieDetailsModule */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -410,6 +417,16 @@
 				F8EF59CF1DD42CFD007B8C3D /* CinemaMarkerInfoView.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		F8F8C8DD1DE7FA3300743829 /* NewsDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				F8F8C8DE1DE7FA5E00743829 /* NewsDetailsViewController.swift */,
+				F8F8C8E21DE7FAB800743829 /* NewsDetailsViewModel.swift */,
+				F8F8C8E01DE7FA6B00743829 /* NewsDetails.swift */,
+			);
+			name = NewsDetailModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -706,9 +723,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8F8C8DF1DE7FA5E00743829 /* NewsDetailsViewController.swift in Sources */,
 				F8470C1E1DDC470900ACC821 /* ThumbnailCell.swift in Sources */,
 				F8373A621DDF0B6F00926E6D /* MovieSession.swift in Sources */,
 				F80BD1371DD97548007D0C5F /* MovieDetailsViewModel.swift in Sources */,
+				F8F8C8E31DE7FAB800743829 /* NewsDetailsViewModel.swift in Sources */,
 				F892BA9B1DD05D2200A1E522 /* SubViewModel.swift in Sources */,
 				F851F2551DDD4F61002EC768 /* MovieSummaryCell.swift in Sources */,
 				F8373A5A1DDEDA7000926E6D /* CategoryCell.swift in Sources */,
@@ -719,6 +738,7 @@
 				F8EF59CC1DD42497007B8C3D /* CinemaMarker.swift in Sources */,
 				F892BA901DD02D0800A1E522 /* CustomTabBarController.swift in Sources */,
 				F8EF59D01DD42CFD007B8C3D /* CinemaMarkerInfoView.swift in Sources */,
+				F8F8C8E11DE7FA6B00743829 /* NewsDetails.swift in Sources */,
 				F851F2681DDD84AB002EC768 /* CinemaScheduleCell.swift in Sources */,
 				F89CBD831DD9C73C00413DEC /* MovieDetails.swift in Sources */,
 				F8A3385F1DE297A800452915 /* MovieSessionGroup.swift in Sources */,

@@ -9,6 +9,8 @@
 import UIKit
 import Kingfisher
 import FLEX
+import AVKit
+import AVFoundation
 
 class MovieDetailsViewController: UIViewController {
   
@@ -18,8 +20,8 @@ class MovieDetailsViewController: UIViewController {
   let movieDetailsViewModel = MovieDetailsViewModel()
   var movieID: String?
   var today: Date?
-  var selectedDayCellIndexPath = IndexPath(row: 0, section: 0)
-  
+  var selectedDayCellIndexPath: IndexPath?
+  var selectedCinemaGroupCellIndexPath: IndexPath?
  
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -44,7 +46,7 @@ class MovieDetailsViewController: UIViewController {
     tableview.register(UINib(nibName: "CalendarCell", bundle: nil), forCellReuseIdentifier: "CalendarCell")
     tableview.register(UINib(nibName: "CinemaGroupCell", bundle: nil), forCellReuseIdentifier: "CinemaGroupCell")
     tableview.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellReuseIdentifier: "ScheduleCell")
-    FLEXManager.shared().showExplorer()
+//    FLEXManager.shared().showExplorer()
     
     loadData()
     
@@ -52,13 +54,18 @@ class MovieDetailsViewController: UIViewController {
   
   // View did appear
   override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(true)
     navigationController?.navigationBar.isHidden = false
+    
   }
   
-  //View did disappear
-  override func viewWillDisappear(_ animated: Bool) {
-    let cell = tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! ThumbnailCell
-    cell.stopVideo()
+  // view did disappear
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(true)
+    let indexPath = IndexPath(row: 0, section: 0)
+    tableview.scrollToRow(at: indexPath, at: .top, animated: false)
+    let cell = tableview.cellForRow(at: indexPath) as? ThumbnailCell
+    cell?.stopVideo()
   }
   
   func back() {
@@ -70,13 +77,10 @@ class MovieDetailsViewController: UIViewController {
       (movieDetails) in
       
       self.today = Date()
-      
       self.tableview.reloadData()
       
     }
   }
-  
- 
 }
 
 // MARK: UITableViewDataSource
@@ -132,28 +136,30 @@ extension MovieDetailsViewController: UITableViewDataSource {
 
       
     } else if let calendarCell = cell as? CalendarCell {
-      calendarCell.collectionView.register(UINib(nibName: "DayCell", bundle: nil), forCellWithReuseIdentifier: "DayCell")
-      calendarCell.collectionView.delegate = self
       calendarCell.collectionView.dataSource = self
-      calendarCell.collectionView.selectItem(at: selectedDayCellIndexPath, animated: true, scrollPosition: .left)
+      calendarCell.collectionView.delegate = self
+      
+      var selectedIndexPath: IndexPath?
+      if let selectedDayCellIndexPath = selectedDayCellIndexPath {
+        selectedIndexPath = selectedDayCellIndexPath
+      } else {
+        selectedIndexPath = IndexPath(row: 0, section: 0)
+      }
+      calendarCell.collectionView.selectItem(at: selectedIndexPath!, animated: true, scrollPosition: .centeredHorizontally)
       DispatchQueue.main.async {
-        self.collectionView(calendarCell.collectionView, didSelectItemAt: self.selectedDayCellIndexPath)
+        self.collectionView(calendarCell.collectionView, didSelectItemAt: selectedIndexPath!)
       }
       
     } else if let cinemaGroupCell = cell as? CinemaGroupCell {
       cinemaGroupCell.addSeparator(color: movieDetailsViewModel.separatorColor.cgColor, thickness: 1, leftInset: 0, rightInset: 0)
-      
       let group = cinemaGroup[(indexPath.row)/2]
       if let value = movieDetails.pCinemaList[group] {
         cinemaGroupCell.cinemaNameLabel.text = "\(group) (\(value))"
       }
       
     } else if let scheduleCell = cell as? ScheduleCell {
-      scheduleCell.tableView.register(UINib(nibName: "CinemaScheduleCell", bundle: nil), forCellReuseIdentifier: "CinemaScheduleCell")      
       let group = cinemaGroup[(indexPath.row)/2]
       scheduleCell.schedules = movieDetails.getSchedules(byPCinemaName: group)
-      scheduleCell.tableView.dataSource = scheduleCell
-      scheduleCell.tableView.delegate = scheduleCell
       scheduleCell.tableView.reloadData()
     }
     
@@ -164,31 +170,44 @@ extension MovieDetailsViewController: UITableViewDataSource {
 extension MovieDetailsViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
- 
-    if indexPath.section == 0 || (indexPath.section == 1 && indexPath.row % 2 == 0) {
-      return UITableViewAutomaticDimension
-    } else {
+    let cell = tableView.cellForRow(at: indexPath)
+    if let scheduleCell = cell as? ScheduleCell {
+      if indexPath == selectedCinemaGroupCellIndexPath {
+        return scheduleCell.tableView.contentSize.height
+      } else {
+        return 0
+      }
+    } else if indexPath.section == 1 && indexPath.row % 2 != 0 {
       return 0
+    } else {
+      return UITableViewAutomaticDimension
     }
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableViewAutomaticDimension
+    return 50
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: false)
-    if ((tableView.cellForRow(at: indexPath) as? CinemaGroupCell) != nil) {
-      let index = IndexPath(row: indexPath.row + 1, section: indexPath.section)
-      if let cell = tableView.cellForRow(at: index) as? ScheduleCell {
-        cell.toggle()
-        tableView.beginUpdates()
-        tableView.endUpdates()
-      }
+
+    if (tableView.cellForRow(at: indexPath) as? CinemaGroupCell) != nil {
+      let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+      selectedCinemaGroupCellIndexPath = nextIndexPath
+      
+      tableView.reloadRows(at: [nextIndexPath], with: .none)
+      tableView.reloadRows(at: [nextIndexPath], with: .none)
     }
     tableview.scrollToRow(at: indexPath, at: .top, animated: true)
-    
+   
   }
+  
+  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    selectedCinemaGroupCellIndexPath = nil
+    tableView.beginUpdates()
+    tableView.endUpdates()
+    tableview.scrollToRow(at: indexPath, at: .top, animated: true)
+  }
+
 }
 
 //// MARK: ThumbnailCellDelegate
@@ -259,13 +278,15 @@ extension MovieDetailsViewController: UICollectionViewDataSource {
 // MARK: UICollectionViewDelegate
 extension MovieDetailsViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    selectedDayCellIndexPath = indexPath
-    
-    guard let cell = collectionView.cellForItem(at: selectedDayCellIndexPath) as? DayCell else { return }
-    
-    movieDetailsViewModel.fetchScheduleByMovie(id: movieID, date: cell.getShortDate(), completionHandler: {
-      self.tableview.reloadSections(IndexSet(integer: 1), with: .none)
-    })
+    selectedCinemaGroupCellIndexPath = nil
+    if selectedDayCellIndexPath != indexPath {
+      selectedDayCellIndexPath = indexPath
+      guard let cell = collectionView.cellForItem(at: selectedDayCellIndexPath!) as? DayCell else { return }
+      
+      movieDetailsViewModel.fetchScheduleByMovie(id: movieID, date: cell.getShortDate(), completionHandler: {
+        self.tableview.reloadSections(IndexSet(integer: 1), with: .none)
+      })
+    }
   }
 }
 

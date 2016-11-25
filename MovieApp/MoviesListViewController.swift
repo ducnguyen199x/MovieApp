@@ -13,9 +13,10 @@ import RxSwift
 class MoviesListViewController: UIViewController {
   
   @IBOutlet var collectionView: UICollectionView!
-  
-  let disposeBag = DisposeBag()
   @IBOutlet var viewModel: MoviesListViewModel!
+  
+  var refreshControl: UIRefreshControl?
+  let disposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,13 +31,19 @@ class MoviesListViewController: UIViewController {
       
     }, onError: nil, onCompleted: nil, onDisposed: nil)
       .addDisposableTo(disposeBag)
+    
+    refreshControl = UIRefreshControl()
+    refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+ 
+    if #available(iOS 10.0, *) {
+      collectionView.refreshControl = refreshControl
+    } else {
+      // Fallback on earlier versions
+    }
+    
+    viewModel.fetchMovies(completionHandler: nil)
   }
   
-  // only load data when view is shown
-  override func viewDidAppear(_ animated: Bool) {
-    
-    viewModel.fetchMovies()
-  }
   
   override func viewWillAppear(_ animated: Bool) {
     navigationController?.navigationBar.isHidden = true
@@ -45,11 +52,17 @@ class MoviesListViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showDetailsView" {
       
-      guard let destinationViewController: MovieDetailsViewController = segue.destination as? MovieDetailsViewController, let selectedIndex = collectionView.indexPathsForSelectedItems?.first?.row else { return }
+      guard let destinationViewController = segue.destination as? MovieDetailsViewController, let selectedIndex = collectionView.indexPathsForSelectedItems?.first?.row else { return }
       
       destinationViewController.movieID = viewModel.getMovie(atIndex: selectedIndex).id
       
     }
+  }
+  
+  func refreshData() {
+    viewModel.fetchMovies(completionHandler: {
+      self.refreshControl?.endRefreshing()
+    })
   }
 }
 

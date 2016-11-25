@@ -12,4 +12,8 @@ class CalendarCell: UITableViewCell {
   
   @IBOutlet var collectionView: UICollectionView!
   
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    collectionView.register(UINib(nibName: "DayCell", bundle: nil), forCellWithReuseIdentifier: "DayCell")
+  }
 }

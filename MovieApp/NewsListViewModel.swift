@@ -28,7 +28,7 @@ class NewsListViewModel {
 
 
   // Fetch Data from API
-  func fetchNews() {
+  func fetchNews(completionHandler: (() -> ())?) {
     guard let url = URL(string: "\(api.getAPIPath())?type_id=1") else { return }
     
     // Create request
@@ -46,6 +46,10 @@ class NewsListViewModel {
       } else if let httpResponse = response as? HTTPURLResponse {
         if httpResponse.statusCode == 200 {
           self.updateNewsList(data: data)
+          
+          if let completionHandler = completionHandler {
+            completionHandler()
+          }
         }
       }
     }

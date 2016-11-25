@@ -17,13 +17,18 @@ class ScheduleCell: UITableViewCell {
   
   func toggle() {
     if height == 0 {
-      height = tableView.contentSize.height
-      print(tableView.contentSize.height)
+//      height = tableView.contentSize.height
+      height = 200
     } else {
       height = 0
     }
   }
   
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    tableView.register(UINib(nibName: "CinemaScheduleCell", bundle: nil), forCellReuseIdentifier: "CinemaScheduleCell")
+  }
+
 }
 
 // MARK: UITableViewDataSource
@@ -34,13 +39,10 @@ extension ScheduleCell: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "CinemaScheduleCell", for: indexPath) as! CinemaScheduleCell
-    cell.scheduleTableView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
     cell.cinemaNameLabel.text = schedules[indexPath.row].cinemaName
-    cell.sessionGroup = schedules[indexPath.row].sessionGroups
-    cell.scheduleTableView.dataSource = cell
-    cell.scheduleTableView.delegate = cell
+    cell.sessionGroups = schedules[indexPath.row].sessionGroups
     cell.scheduleTableView.reloadData()
-    
+
     return cell
   }
 }
@@ -49,16 +51,14 @@ extension ScheduleCell: UITableViewDataSource {
 extension ScheduleCell: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     let cell = tableView.cellForRow(at: indexPath)
-      
     if let cinemaScheduleCell = cell as? CinemaScheduleCell {
       return cinemaScheduleCell.scheduleTableView.contentSize.height + 50
     }
-    
-    return 180
+    return 200
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 180
+    return 200
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

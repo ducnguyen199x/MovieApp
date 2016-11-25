@@ -11,8 +11,8 @@ import Gloss
 import RxSwift
 
 enum ListType: Int {
-  case NowShowing = 1
-  case Upcoming
+  case Upcoming = 1
+  case NowShowing
 }
 
 class MoviesListViewModel : NSObject {
@@ -38,7 +38,7 @@ class MoviesListViewModel : NSObject {
     self.type = type
   }
   
-  func fetchMovies() {
+  func fetchMovies(completionHandler: (() -> ())?) {
     guard let url = URL(string: "\(api.getAPIPath())?status=\(self.type.rawValue)") else { return }
     
     
@@ -57,6 +57,9 @@ class MoviesListViewModel : NSObject {
       } else if let httpResponse = response as? HTTPURLResponse {
         if httpResponse.statusCode == 200 {
           self.updateMoviesList(data: data)
+          if let completionHandler = completionHandler {
+            completionHandler()
+          }
         }
       }
     }

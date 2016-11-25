@@ -9,6 +9,34 @@
 import Foundation
 import Gloss
 
+enum MovieVersion: Int {
+  case twoDimention = 2
+  case threeDimention
+  
+  func description() -> String {
+    switch self {
+    case .twoDimention:
+      return "2D"
+    case .threeDimention:
+      return "3D"
+    }
+  }
+}
+
+enum MovieVoice: Int {
+  case dub = 0
+  case sub
+  
+  func description() -> String {
+    switch self {
+    case .dub:
+      return " Dub"
+    case .sub:
+      return ""
+    }
+  }
+}
+
 class Schedule: Decodable {
   let cinemaName: String?
   let pCinemaName: String?

@@ -9,8 +9,8 @@
 import Gloss
 
 class MovieSessionGroup: Decodable {
-  let versionID: Int?
-  let isVoice: Int?
+  let versionID: MovieVersion?
+  let isVoice: MovieVoice?
   var sessions = [MovieSession]()
   
   required init?(json: JSON) {
