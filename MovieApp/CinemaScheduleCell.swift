@@ -34,7 +34,7 @@ extension CinemaScheduleCell: UITableViewDataSource {
     cell.sessionGroup = sessionGroups[indexPath.row]
     cell.loadCategory()
     cell.collectionView.reloadData()
-    
+
     return cell
   }
 }
@@ -44,13 +44,19 @@ extension CinemaScheduleCell: UITableViewDataSource {
 extension CinemaScheduleCell: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if let cell = tableView.cellForRow(at: indexPath) as? CategoryCell {
+
       return cell.collectionView.contentSize.height + 20
+
     }
     return 200
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     return 200
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
   }
 }
 

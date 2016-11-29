@@ -46,7 +46,7 @@ class MovieDetailsViewController: UIViewController {
     tableview.register(UINib(nibName: "CalendarCell", bundle: nil), forCellReuseIdentifier: "CalendarCell")
     tableview.register(UINib(nibName: "CinemaGroupCell", bundle: nil), forCellReuseIdentifier: "CinemaGroupCell")
     tableview.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellReuseIdentifier: "ScheduleCell")
-//    FLEXManager.shared().showExplorer()
+    FLEXManager.shared().showExplorer()
     
     loadData()
     
@@ -189,25 +189,29 @@ extension MovieDetailsViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+    tableView.deselectRow(at: indexPath, animated: false)
+    
     if (tableView.cellForRow(at: indexPath) as? CinemaGroupCell) != nil {
       let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
-      selectedCinemaGroupCellIndexPath = nextIndexPath
+      if selectedCinemaGroupCellIndexPath == nextIndexPath {
+        selectedCinemaGroupCellIndexPath = nil
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
+      } else {
+        selectedCinemaGroupCellIndexPath = nextIndexPath
+        tableView.reloadRows(at: [nextIndexPath], with: .none)
+        DispatchQueue.main.async {
+          tableView.reloadRows(at: [nextIndexPath], with: .none)
+//        self.tableview.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
+      }
       
-      tableView.reloadRows(at: [nextIndexPath], with: .none)
-      tableView.reloadRows(at: [nextIndexPath], with: .none)
+      
     }
-    tableview.scrollToRow(at: indexPath, at: .top, animated: true)
-   
+
   }
   
-  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    selectedCinemaGroupCellIndexPath = nil
-    tableView.beginUpdates()
-    tableView.endUpdates()
-    tableview.scrollToRow(at: indexPath, at: .top, animated: true)
-  }
-
 }
 
 //// MARK: ThumbnailCellDelegate

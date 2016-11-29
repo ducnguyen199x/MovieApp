@@ -27,17 +27,54 @@
                         <action selector="playButtonClicked:" destination="CmA-p0-Zt9" eventType="touchUpInside" id="OIJ-Ww-pH4"/>
                     </connections>
                 </button>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="LQr-Qn-1fc">
+                    <rect key="frame" x="42" y="131" width="291" height="31"/>
+                    <color key="minimumTrackTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="maximumTrackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="thumbTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="sliderValueChanged:" destination="CmA-p0-Zt9" eventType="valueChanged" id="rE6-eV-UqR"/>
+                    </connections>
+                </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aZ-9o-JpF">
+                    <rect key="frame" x="5" y="139" width="34" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="riD-bG-abz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgF-jz-MfX">
+                    <rect key="frame" x="336" y="139" width="34" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="1uC-qh-mjI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="MgF-jz-MfX" secondAttribute="trailing" constant="5" id="KaG-dl-nWu"/>
+                <constraint firstItem="2aZ-9o-JpF" firstAttribute="leading" secondItem="CmA-p0-Zt9" secondAttribute="leading" constant="5" id="VYU-cO-4as"/>
                 <constraint firstItem="XGd-O7-8FG" firstAttribute="centerX" secondItem="CmA-p0-Zt9" secondAttribute="centerX" id="Z50-x7-RuL"/>
+                <constraint firstItem="MgF-jz-MfX" firstAttribute="centerY" secondItem="LQr-Qn-1fc" secondAttribute="centerY" id="fRv-xo-cDK"/>
+                <constraint firstAttribute="bottom" secondItem="2aZ-9o-JpF" secondAttribute="bottom" constant="7" id="frx-71-mXd"/>
+                <constraint firstItem="MgF-jz-MfX" firstAttribute="leading" secondItem="LQr-Qn-1fc" secondAttribute="trailing" constant="5" id="g4J-L5-kOE"/>
+                <constraint firstItem="LQr-Qn-1fc" firstAttribute="leading" secondItem="2aZ-9o-JpF" secondAttribute="trailing" constant="5" id="gwY-2r-9lw"/>
                 <constraint firstItem="XGd-O7-8FG" firstAttribute="centerY" secondItem="CmA-p0-Zt9" secondAttribute="centerY" id="qjS-ja-tah"/>
+                <constraint firstItem="2aZ-9o-JpF" firstAttribute="centerY" secondItem="LQr-Qn-1fc" secondAttribute="centerY" id="tZx-RR-qov"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="currentTimeLabel" destination="2aZ-9o-JpF" id="zcl-bb-qob"/>
+                <outlet property="maxTimeLabel" destination="MgF-jz-MfX" id="fdd-uT-UbR"/>
                 <outlet property="playButton" destination="XGd-O7-8FG" id="rUw-Ak-K5i"/>
+                <outlet property="slider" destination="LQr-Qn-1fc" id="jAN-YI-Nrh"/>
             </connections>
-            <point key="canvasLocation" x="-222" y="166"/>
+            <point key="canvasLocation" x="-224.5" y="167.5"/>
         </view>
     </objects>
     <resources>

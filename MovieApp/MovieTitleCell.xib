@@ -104,6 +104,9 @@
                     <constraint firstItem="fZv-Yg-yNr" firstAttribute="centerY" secondItem="ND0-Jj-w1b" secondAttribute="centerY" id="uEP-VY-fhd"/>
                 </constraints>
             </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" notEnabled="YES"/>
+            </accessibility>
             <connections>
                 <outlet property="durationLabel" destination="fZv-Yg-yNr" id="CbS-mv-fQt"/>
                 <outlet property="imdbPointLabel" destination="Pn0-bo-3Il" id="H8V-NS-ezu"/>

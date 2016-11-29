@@ -14,7 +14,7 @@
         <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="340" id="Ima-OI-hMo" customClass="CinemaScheduleCell" customModule="MovieApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="340"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ima-OI-hMo" id="8LB-84-C91">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="Ima-OI-hMo" id="8LB-84-C91">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
