@@ -191,7 +191,9 @@ extension MovieDetailsViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//    tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
     tableView.deselectRow(at: indexPath, animated: false)
+    
     
     if (tableView.cellForRow(at: indexPath) as? CinemaGroupCell) != nil {
       let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
@@ -201,17 +203,19 @@ extension MovieDetailsViewController: UITableViewDelegate {
         tableView.endUpdates()
         
       } else {
+        if let selectedCinemaGroupCellIndexPath = selectedCinemaGroupCellIndexPath {
+          tableview.scrollToRow(at: IndexPath(row: selectedCinemaGroupCellIndexPath.row - 1, section: selectedCinemaGroupCellIndexPath.section), at: .top, animated: true)
+        }
+        
         selectedCinemaGroupCellIndexPath = nextIndexPath
+        tableView.scrollToRow(at: indexPath, at: .top, animated: false)
         tableView.reloadRows(at: [nextIndexPath], with: .none)
         DispatchQueue.main.async {
+          
           tableView.reloadRows(at: [nextIndexPath], with: .none)
-          self.tableview.scrollToRow(at: indexPath, at: .top, animated: true)
         }
       }
       
-      if (tableView.cellForRow(at: indexPath) as? ScheduleCell) != nil {
-        tableView.reloadRows(at: [indexPath], with: .none)
-      }
     }
 
   }

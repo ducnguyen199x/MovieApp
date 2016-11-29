@@ -10,14 +10,14 @@ import Foundation
 import Gloss
 
 enum MovieVersion: Int {
-  case twoDimention = 2
-  case threeDimention
+  case twoDimension = 2
+  case threeDimension
   
   func description() -> String {
     switch self {
-    case .twoDimention:
+    case .twoDimension:
       return "2D"
-    case .threeDimention:
+    case .threeDimension:
       return "3D"
     }
   }
