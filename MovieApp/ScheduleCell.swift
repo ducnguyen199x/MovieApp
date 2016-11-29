@@ -47,11 +47,11 @@ extension ScheduleCell: UITableViewDelegate {
     if let cinemaScheduleCell = cell as? CinemaScheduleCell {
       return cinemaScheduleCell.scheduleTableView.contentSize.height + 50
     }
-    return 300
+    return 400
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 300
+    return 400
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

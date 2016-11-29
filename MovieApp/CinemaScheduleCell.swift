@@ -19,6 +19,7 @@ class CinemaScheduleCell: UITableViewCell {
     super.awakeFromNib()
     scheduleTableView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
   }
+
 }
 
 
@@ -48,11 +49,11 @@ extension CinemaScheduleCell: UITableViewDelegate {
       return cell.collectionView.contentSize.height + 20
 
     }
-    return 200
+    return 100
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 200
+    return 100
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

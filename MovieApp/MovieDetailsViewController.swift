@@ -46,6 +46,8 @@ class MovieDetailsViewController: UIViewController {
     tableview.register(UINib(nibName: "CalendarCell", bundle: nil), forCellReuseIdentifier: "CalendarCell")
     tableview.register(UINib(nibName: "CinemaGroupCell", bundle: nil), forCellReuseIdentifier: "CinemaGroupCell")
     tableview.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellReuseIdentifier: "ScheduleCell")
+    tableview.contentInset = UIEdgeInsetsMake(0.0, 0.0, 100.0, 0.0)
+    
     FLEXManager.shared().showExplorer()
     
     loadData()
@@ -203,11 +205,13 @@ extension MovieDetailsViewController: UITableViewDelegate {
         tableView.reloadRows(at: [nextIndexPath], with: .none)
         DispatchQueue.main.async {
           tableView.reloadRows(at: [nextIndexPath], with: .none)
-//        self.tableview.scrollToRow(at: indexPath, at: .top, animated: true)
+          self.tableview.scrollToRow(at: indexPath, at: .top, animated: true)
         }
       }
       
-      
+      if (tableView.cellForRow(at: indexPath) as? ScheduleCell) != nil {
+        tableView.reloadRows(at: [indexPath], with: .none)
+      }
     }
 
   }
