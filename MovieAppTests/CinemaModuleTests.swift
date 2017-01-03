@@ -1,15 +1,14 @@
 //
-//  MovieAppTests.swift
-//  MovieAppTests
+//  CinemaModuleTests.swift
+//  MovieApp
 //
-//  Created by Nguyen Thanh Duc on 11/7/16.
+//  Created by Nguyen Thanh Duc on 12/21/16.
 //  Copyright © 2016 NguyenThanhDuc. All rights reserved.
 //
 
 import XCTest
-@testable import MovieApp
 
-class MovieAppTests: XCTestCase {
+class CinemaModuleTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
